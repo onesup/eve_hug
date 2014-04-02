@@ -1,7 +1,7 @@
 namespace :load do
   task :defaults do
-    set :nginx_server_name, -> { fetch(:rails_env) == 'production' ? 'birthday.su-m37.co.kr' : 'eve_hug.mnv.kr' }
-    set :nginx_use_ssl, true
+    set :nginx_server_name, -> { fetch(:rails_env) == 'production' ? 'hug.mnv.kr' : 'hug.mnv.kr' }
+    set :nginx_use_ssl, false
     set :nginx_ssl_certificate, -> { "#{fetch(:nginx_server_name)}.chained.crt" }
     set :nginx_ssl_certificate_key, -> { "#{fetch(:nginx_server_name)}.nopass.key" }
     set :nginx_upload_local_certificate, true
