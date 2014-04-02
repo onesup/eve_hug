@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module EveHug
   class Application < Rails::Application
-    config.force_ssl = true
+    # config.force_ssl = false
     config.time_zone = 'Asia/Seoul'
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
