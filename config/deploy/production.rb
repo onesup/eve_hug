@@ -21,7 +21,7 @@ set :rails_env,   "production"
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
 # set it globally
 set :ssh_options, {
-  keys: %w(/Users/daul/.ssh/ids/mnv.kr/deployer/id_rsa)
+  keys: %w(/Users/daul/.ssh/ids/hug.mnv.kr/deployer/id_rsa)
   # forward_agent: false,
   # auth_methods: %w(password)
 }

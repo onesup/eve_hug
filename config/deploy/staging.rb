@@ -4,9 +4,9 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{onesup@eve_hug.mnv.kr}
-role :web, %w{onesup@eve_hug.mnv.kr}
-role :db,  %w{onesup@eve_hug.mnv.kr}
+role :app, %w{onesup@hug.mnv.kr}
+role :web, %w{onesup@hug.mnv.kr}
+role :db,  %w{onesup@hug.mnv.kr}
 
 # Extended Server Syntax
 # ======================
@@ -21,7 +21,7 @@ server 'hug.mnv.kr', user: 'deployer', roles: %w{web app}, my_property: :my_valu
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
 # set it globally
 set :ssh_options, {
-  keys: %w(/Users/daul/.ssh/ids/eve_hug.mnv.kr/deployer/id_rsa)
+  keys: %w(/Users/daul/.ssh/ids/hug.mnv.kr/deployer/id_rsa)
   # forward_agent: false,
   # auth_methods: %w(password)
 }
