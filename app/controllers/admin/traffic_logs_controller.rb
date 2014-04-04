@@ -36,4 +36,6 @@ class Admin::TrafficLogsController < ApplicationController
     ,sum(case when source not in ('lgh','sum37','lc','tw','fb','sw','ks','kt','blog','fbapp','page','lm','edm') then 1 else 0 end) as etc_count
     ,count(*) as total_count")
   end
+  
+  
 end
