@@ -9,19 +9,75 @@
       <a href="#" id="message_button">
         <%= image_tag("pc/send_message_button.png", class: "img_margin") %>
       </a>
-      <div class="letter_container">
-        <%= image_tag("pc/letter.png") %>
-        <div class="letter_contents">
-          
+    </div>
+    <div class="letter_container">
+      <%= image_tag("pc/letter.png") %>
+      <div class="letter_contents">
+        
+      </div>
+    </div>
+    <div class="under_letter">
+      <%= image_tag("pc/message_to_user.png", class: "message") %>
+      <%= image_tag("pc/show_present_button.png", class: "show_present") %>
+    </div>
+    <div class="comment_list_container">
+      <div class="comment_container">
+        <div class="profile_image">
+          <%= image_tag("") %>
+        </div>
+        <div class="infomation_comment">
+          <div class="author_comment">네글자이</div>
+          <div class="date_comment">2014.10.27</div>
+          <div class="comment">ahoeus</div>
         </div>
       </div>
-      <div class="under_letter">
-        <%= image_tag("pc/message_to_user.png", class: "message") %>
-        <%= image_tag("pc/show_present_button.png", class: "show_present") %>
+      <div class="comment_container">
+        <div class="profile_image">
+          <%= image_tag("") %>
+        </div>
+        <div class="infomation_comment">
+          <div class="author_comment"></div>
+          <div class="date_comment"></div>
+          <div class="comment"></div>
+        </div>
+      </div>
+      <div class="comment_container">
+        <div class="profile_image">
+          <%= image_tag("") %>
+        </div>
+        <div class="infomation_comment">
+          <div class="author_comment"></div>
+          <div class="date_comment"></div>
+          <div class="comment"></div>
+        </div>
+      </div>
+      <div class="pagging">
+        number list <!-- rails?  -->     
       </div>
     </div>
     <div class="prizes">
       <%= image_tag("pc/prize_event.png") %>
+    </div>
+    <!-- Popup -->
+    <div id="popup_finish">
+      <%= link_to "#", class: "close close_button" do%>
+        <%= image_tag("pc/popup/close.png") %>
+      <% end %>
+      <%= image_tag("pc/popup/thank.png", class: "thanks") %>
+      <br/>
+      <%= link_to "#", class: "close" do %>
+        <%= image_tag("pc/popup/finish_button.png") %>
+      <% end %>
+    </div>
+    <div id="popup_input">
+      <%= link_to "#", class: "close close_button" do%>
+        <%= image_tag("pc/popup/close.png") %>
+      <% end %>
+      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do |f|%>
+        <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
+        <br/>
+        <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>
+      <% end %>
     </div>
   </div>
   <div class="more_info">

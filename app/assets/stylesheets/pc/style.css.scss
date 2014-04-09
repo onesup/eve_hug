@@ -12,7 +12,6 @@ img{
 }
 
 .container{
-  position: relative;
   width: 810px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -53,7 +52,7 @@ img{
 
 .letter_container{
   position: relative;
-  left: 20px;
+  left: 10px;
   margin: 15px 0px;
 }
 
@@ -86,9 +85,115 @@ img{
   margin-top: -16px;
 }
 
+.comment_list_container{
+  position: relative;
+  width: 643px;
+  height: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 36px;
+  background-image: asset-url("pc/comment_background.png");
+}
+
+.comment_container{
+  width: 603px;
+  height: 60px;
+  margin-left: 20px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.profile_image{
+  position: relative;
+  float: left;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  margin-top: -25px;
+}
+
+.infomation_comment{
+  position: relative;
+  float: right;
+  width: 550px;
+  height: 60px;
+}
+
+.author_comment{
+  float: left;
+  height: 20px;
+  margin-left: 20px;
+  color: #9b9b9b;
+}
+
+.date_comment{
+  float: left;
+  width: 80px;
+  height: 20px;
+  margin-left: 10px;
+  color: #c8c8c8;
+}
+
+.comment{
+  clear: both;
+  position: absolute;
+  top: 25px;
+  margin-left: 20px;
+  color: #9b9b9b;
+  text-align: left;
+}
+
+.pagging{
+  text-align: center;
+  height: 20px;
+  padding: 10px 0px;
+  color: #cccccc;
+}
 .more_info{
   position: relative;
   bottom: 0px;
   height: 249px;
   padding-bottom: 0px;
+}
+
+#popup_input{
+  display: none;
+  position: relative;
+  width: 450px;
+  height: 360px;
+  background-image: asset-url("pc/popup/input_background.png");
+  text-align: center;
+}
+
+.input_textarea{
+  margin-top: 100px;
+  width: 350px;
+  height: 120px;
+  border: 0px transparent;
+  resize: none;
+}
+
+#data_submit{
+  position: absolute;
+  bottom: 55px;
+  margin-left: -74px;
+}
+
+#popup_finish{
+  display: none;
+  position: relative;
+  width: 450px;
+  height: 260px;
+  background-color: white;
+  text-align: center;
+}
+
+.close_button{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.thanks{
+  margin-top: 60px;
+  margin-bottom: 30px;
 }
