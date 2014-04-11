@@ -13,7 +13,7 @@
     <div class="letter_container">
       <%= image_tag("pc/letter.png") %>
       <div class="letter_contents">
-        
+
       </div>
     </div>
     <div class="under_letter">
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="pagging">
-        number list <!-- rails?  -->     
+        number list <!-- rails?  -->
       </div>
     </div>
     <div class="prizes">
@@ -65,7 +65,7 @@
       <% end %>
       <%= image_tag("pc/popup/thank.png", class: "thanks") %>
       <br/>
-      <%= link_to "#", class: "close" do %>
+      <%= link_to "#", id: "close_finish", class: "close" do %>
         <%= image_tag("pc/popup/finish_button.png") %>
       <% end %>
     </div>
@@ -73,7 +73,7 @@
       <%= link_to "#", class: "close close_button" do%>
         <%= image_tag("pc/popup/close.png") %>
       <% end %>
-      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do |f|%>
+      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do %>
         <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
         <br/>
         <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>

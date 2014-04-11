@@ -8,5 +8,18 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-
+  $('#data_submit').click(function(e) {
+    e.preventDefault();
+    $("#popup_finish").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+    $('#close_finish').click(function(e){
+      e.preventDefault();
+      $("#popup_finish").bPopup().close();
+      $("#popup_input").bPopup().close();
+    });
+  });
 });
