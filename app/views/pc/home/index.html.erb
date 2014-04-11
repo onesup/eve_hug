@@ -21,38 +21,20 @@
       <%= image_tag("pc/show_present_button.png", class: "show_present") %>
     </div>
     <div class="comment_list_container">
+    <% @comments.each do |comment| %>
       <div class="comment_container">
         <div class="profile_image">
           <%= image_tag("") %>
         </div>
         <div class="infomation_comment">
-          <div class="author_comment">네글자이</div>
-          <div class="date_comment">2014.10.27</div>
-          <div class="comment">ahoeus</div>
+          <div class="author_comment"><%= comment.user.name %></div>
+          <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
+          <div class="comment"><%= shorten_helper(70,comment.message) %></div>
         </div>
       </div>
-      <div class="comment_container">
-        <div class="profile_image">
-          <%= image_tag("") %>
-        </div>
-        <div class="infomation_comment">
-          <div class="author_comment"></div>
-          <div class="date_comment"></div>
-          <div class="comment"></div>
-        </div>
-      </div>
-      <div class="comment_container">
-        <div class="profile_image">
-          <%= image_tag("") %>
-        </div>
-        <div class="infomation_comment">
-          <div class="author_comment"></div>
-          <div class="date_comment"></div>
-          <div class="comment"></div>
-        </div>
-      </div>
+      <% end %>
       <div class="pagging">
-        number list <!-- rails?  -->     
+        <%= paginate @comments %>  
       </div>
     </div>
     <div class="prizes">

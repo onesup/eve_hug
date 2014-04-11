@@ -10,6 +10,7 @@ module EveHug
   class Application < Rails::Application
     # config.force_ssl = false
     config.time_zone = 'Asia/Seoul'
+    config.i18n.default_locale =:ko_KR
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW-FROM https://www.facebook.com'
     }
