@@ -7,7 +7,7 @@ class DailyCard < ActiveRecord::Base
     if self.where(:event_date => event_day).empty?
       result = self.last
     else
-      result = self.where(:event_date => event_day)
+      result = self.where(:event_date => event_day).first
     end
   end
   

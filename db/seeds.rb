@@ -8,8 +8,21 @@
 if User.find_by_email("admin@admin.com").nil?
   User.create!(email:"admin@admin.com", password:"aaabbb", name:"관리자", phone:"010-9999-9999", birthday: Time.now) 
 end
+a = User.create!(email:"admin@admin.com", password:"aaabbb", name:"김이브", phone:"010-9998-9999", birthday: Time.now) 
+b = User.create!(email:"admin@admin.com", password:"aaabbb", name:"김자리", phone:"010-9997-9999", birthday: Time.now) 
+c = User.create!(email:"admin@admin.com", password:"aaabbb", name:"박이브", phone:"010-9996-9999", birthday: Time.now) 
+d = User.create!(email:"admin@admin.com", password:"aaabbb", name:"박자리", phone:"010-9995-9999", birthday: Time.now) 
 
 daily_card = DailyCard.new()
 daily_card.card_image_pc = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
 daily_card.card_image_mobile = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
 daily_card.save()
+
+Comment.create!(user: a, message:"엄마 언제나 감사해요")
+Comment.create!(user: b, message:"엄마 언제나 감사해요")
+Comment.create!(user: c, message:"엄마 언제나 감사해요")
+Comment.create!(user: d, message:"엄마 언제나 감사해요")
+Comment.create!(user: a, message:"아빠 언제나 감사해요")
+Comment.create!(user: b, message:"아빠 언제나 감사해요")
+Comment.create!(user: c, message:"아빠 언제나 감사해요")
+Comment.create!(user: d, message:"아빠 언제나 감사해요")
