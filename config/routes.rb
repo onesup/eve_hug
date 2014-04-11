@@ -1,22 +1,10 @@
 Rails.application.routes.draw do
-
-
-
   namespace :admin do
     get '/' => 'dashboard#index'
     resources :traffic_logs
     resources :users do
-      collection do
-        get 'couponused'
-      end
-    end
-    resources :coupons do
-      member do
-        get 'send_message'
-      end
     end
     resources :viral_actions 
-
     resources :daily_cards
   end
 
@@ -51,11 +39,6 @@ Rails.application.routes.draw do
 
   root 'web_switch#index'
 
-  get "/:code", to:"coupons#show", contraints:{code: /[a-z]{5}-\d{4}/}, as: "coupon"
-  get "/:code/edit", to:"coupons#edit", contraints:{code: /[a-z]{5}-\d{4}/}, as: "edit_coupon"
-  put "/:code", to:"coupons#update", contraints:{code: /[a-z]{5}-\d{4}/}, as: "update_coupon"
   # resources :users
   devise_for :users
-  resources :coupons, except: [:update, :edit, :show] do
-  end
 end

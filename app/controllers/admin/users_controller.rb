@@ -9,19 +9,4 @@ class Admin::UsersController < ApplicationController
       count(*) as total_count")
   end
   
-  def couponused
-    @couponusedusers = User.includes(:coupon)
-      .where(:coupons =>{:status => "used"})
-      .order("coupons.updated_at DESC")
-      .page(params[:page]).per(200)
-    @couponused_counts = User.select("
-      date(coupons.updated_at) used_date,
-      count(*) used_count ")
-      .joins(:coupon)
-      .where(:coupons =>{:status => "used"})
-      .group("date(convert_tz(coupons.updated_at,'+00:00','+09:00'))")
-      .order("coupons.updated_at")
-    # @coupon_used_counts = User.all.count_by_date()
-  end
-  
 end

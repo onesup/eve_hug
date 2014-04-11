@@ -14,12 +14,6 @@ class Pc::UsersController < ApplicationController
     @user.device = device
     respond_to do |format|
       if @user.save
-        coupon = Coupon.new
-        coupon.code = coupon.random_code
-        coupon.user = @user
-        coupon.save
-        MessageJob.new.async.perform(coupon)
-      
         @log = AccessLog.new(ip: request.remote_ip, device: device)
         @log.user = @user
         @log.save
