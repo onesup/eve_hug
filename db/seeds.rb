@@ -8,3 +8,8 @@
 if User.find_by_email("admin@admin.com").nil?
   User.create!(email:"admin@admin.com", password:"aaabbb", name:"관리자", phone:"010-9999-9999", birthday: Time.now) 
 end
+
+daily_card = DailyCard.new()
+daily_card.card_image_pc = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
+daily_card.card_image_mobile = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
+daily_card.save()

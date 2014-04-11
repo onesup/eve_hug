@@ -31,6 +31,7 @@ gem 'debugger', group: [:development, :test]
 # gem 'dragonfly', "~>1.0.3"
 gem 'koala'
 gem 'thor', '0.19.0'
+gem 'carrierwave' #image uploader
 # gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
 group :development do
   gem 'guard-rails',        group: :development

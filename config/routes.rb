@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   namespace :admin do
     get '/' => 'dashboard#index'
     resources :traffic_logs
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
       end
     end
     resources :viral_actions 
+
+    resources :daily_cards
   end
 
   namespace :fb do
