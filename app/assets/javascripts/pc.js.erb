@@ -5,8 +5,19 @@ $(document).ready(function(){
       follow: [false, false], //x, y
       positionStyle: 'fixed',
       closeClass: 'close',
-      modalColor: 'black'
+      modalColor: 'black',
+      onClose : function() {
+
+      }
     });
   });
-
+  $("data_submit").click(function(event){
+    event.preventDefault();
+    $("#popup_finish").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black',
+    });
+  });  
 });
