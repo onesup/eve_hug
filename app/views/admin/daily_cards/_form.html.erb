@@ -1,15 +1,15 @@
 <%= form_for([:admin, @daily_card]) do |f| %>
-  <%# if @daily_card.errors.any? %>
+  <% if @daily_card.errors.any? %>
     <div id="error_explanation">
-      <h2><%#= pluralize(@daily_card.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(@daily_card.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-      <%# @daily_card.errors.full_messages.each do |msg| %>
-        <li><%#= msg %></li>
-      <%# end %>
+      <% @daily_card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
       </ul>
     </div>
-  <%# end %>
+  <% end %>
 <div class="row-fluid">
   <!-- block -->
   <div class="block">
@@ -25,8 +25,8 @@
                     <label class="control-label" for="focusedInput">게시예정일 (오늘 날짜: <%= Time.now.strftime('%Y-%m-%d') %>)</label>
                     <span></span>
                     <div class="controls">
-                      <%= f.date_select :event_date %>
-                      </div>
+                      <%= f.date_select :event_date, use_month_numbers: true  %>
+                    </div>
                     
                   </div>
                   <div class="control-group well">
