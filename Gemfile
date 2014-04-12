@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.1.0.rc1'
+gem 'rails', '4.1.0.rc2'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '>= 1.3.0'
@@ -31,6 +31,7 @@ gem 'debugger', group: [:development, :test]
 # gem 'dragonfly', "~>1.0.3"
 gem 'koala'
 gem 'thor', '0.19.0'
+gem 'carrierwave' #image uploader
 # gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
 group :development do
   gem 'guard-rails',        group: :development

@@ -14,11 +14,6 @@ class Mobile::UsersController < ApplicationController
     @user.device = device
     respond_to do |format|
       if @user.save
-        c = Coupon.new
-        c.code = c.random_code
-        c.user = @user
-        c.save
-        MessageJob.new.async.perform(c)
         @log = AccessLog.new(ip: request.remote_ip, device: device)
         @log.user = @user
         @log.save
