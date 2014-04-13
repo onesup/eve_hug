@@ -1,0 +1,106 @@
+body{
+	margin: 0;
+	background-color: #EBDCCE;
+	background-image: asset-url('mobile/main/background.png');
+}
+
+.header{
+	width: 100%;
+	margin-top: 3%;
+}
+
+.header_logo{
+	width: 30%;
+	margin-left: 5%;
+}
+
+.header_label{
+	width: 50%;
+	float:right;
+}
+
+
+.title{
+	margin-top: 8%;
+	text-align: center;
+}
+
+.title_label{
+	width: 85%;
+	margin: 3% 0 3% 0;
+}
+
+.title_label_btn{
+	width: 60%;
+	margin: 1% 0 1% 0;
+}
+
+.title_share{
+	float: left;
+	margin-left: 20%;
+	width: 60%;
+}
+
+.title_share_element{
+	width: 48%;
+}
+
+.title_share_element_right{
+	margin-left: 2%;
+}
+
+.content_letter_element{
+	width: 95%;
+	margin-left: 2.5%;
+}
+
+.content_letter_front{
+	position: absolute;
+	left: 0;
+}
+
+.content_label{
+	width: 70%;
+	margin-bottom: 3%;
+}
+
+.content_btn{
+	width: 35%;
+}
+
+.show{
+	margin-top: 5%;
+	text-align: center;
+}
+
+.comment{
+	width: 85%;
+	margin: 5% 0 5% 7.5%;
+	background-image: asset-url('mobile/main/comment_background.png');
+	text-align: center;
+}
+
+.gift{
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+.gift_element{
+	width: 85%;
+}
+
+.personal_info{
+	width: 100%;
+}
+
+.personal_info_btnBox{
+	
+}
+
+.personal_info_btn{
+	position: absolute;
+	margin-top: -25%;
+	margin-left: 23%;
+	width: 20%;
+}
+
