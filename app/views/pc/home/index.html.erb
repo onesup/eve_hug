@@ -19,8 +19,7 @@
     <div class="letter_container">
       <%= image_tag("pc/letter.png") %>
       <div class="letter_contents">
-        
-        <%= image_tag(DailyCard.today_image.card_image_pc)%>
+        <%#= image_tag(DailyCard.today_image.card_image_pc) %>
       </div>
     </div>
     <div class="under_letter">
@@ -43,13 +42,12 @@
         </div>
       <% end %>
     </div>
-      <div class="paging">
-        <%= paginate @comments %>
-      </div>
+    <div class="paging">
+      <%= paginate @comments %>
     </div>
-    <div class="prizes">
-      <%= image_tag("pc/prize_event.png") %>
-    </div>
+  </div>
+  <div class="prizes">
+    <%= image_tag("pc/prize_event.png", class: "centering") %>
   </div>
   <div class="footer">
     <%= image_tag("pc/event_information.png", class: "information_event") %>
@@ -86,14 +84,20 @@
     <% end %>
     <%= image_tag("pc/popup/present_title.png", class: "present_title") %>
     <!-- thaoeusoahenuhaosnuhoeansu -->
-    <%= image_tag("", class: "image_eve") %>
-    <div class="explain_eve">
+    <%= image_tag("", class: "image_bedcloths") %>
+    <div class="explain_bedcloths">
       <!-- contents -->
     </div>
     <div class="popup_footer">
-      <div class="paging">
-        <%= link_to "#" do %><%= image_tag("pc/popup/paging_icon_active.png", class: "paging_icon") %><% end %>
-        <%= link_to "#" do %><%= image_tag("pc/popup/paging_icon.png", class: "paging_icon") %><% end %>
+      <div class="image_paging_list">
+        <%= link_to "#" do %>
+          <div class="image_paging icon_active">
+          </div>
+        <% end %>
+        <%= link_to "#" do %>
+          <div class="image_paging icon_none">
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

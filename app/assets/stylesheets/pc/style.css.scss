@@ -163,8 +163,20 @@ img{
     color: #cccccc;
   }
 }
+
+.prizes{
+  width: 100%;
+  margin-bottom: 50px;  
+}
+.centering{
+  display: block;
+  margin: 0 auto;
+}
+
 .footer{
   position: relative;
+  width: 810px;
+  margin: 0 auto;
   bottom: 0px;
   height: 249px;
   padding-bottom: 20px;
@@ -241,24 +253,39 @@ img{
   margin-top: 50px;
 }
 
-.image_eve{
+.image_bedcloths{
   display: block;
   margin-top: 30px;
   max-height: 300px;
 }
 
-.explain_eve{
+.explain_bedcloths{
   margin: 10px auto;
   height: 60px;
 }
 
-.paging{
+.image_paging_list{
   margin: 0 auto;
   bottom: 10px; 
+
+  a {
+    text-decoration:none;
+  }
 }
 
-.paging_icon{
+.image_paging{
+  display: inline-block;
+  width: 21px;
+  height: 21px;
   margin: 5px 0;
+}
+
+.icon_active{
+  background-image: asset-url("pc/popup/paging_icon_active.png");
+}
+
+.icon_none{
+  background-image: asset-url("pc/popup/paging_icon.png");
 }
 
 .popup_footer{
