@@ -17,7 +17,7 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-  $(".finish_button, #close_button").click(function(event) {
+  $("#close_finish").click(function(event) {
     event.preventDefault();
     $("#popup_finish").bPopup().close();
     $("#popup_input").bPopup().close();
@@ -39,5 +39,12 @@ $(document).ready(function(){
       closeClass: 'close',
       modalColor: 'black'
     });
+  });
+  $(".image_paging").click(function(event) {
+    event.preventDefault();
+    $(".image_paging").removeClass('icon_active icon_none');
+    $(".image_paging").addClass('icon_none');
+    $(this).removeClass("icon_none");
+    $(this).addClass('icon_active');
   });
 });
