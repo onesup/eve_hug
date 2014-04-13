@@ -5,19 +5,39 @@ $(document).ready(function(){
       follow: [false, false], //x, y
       positionStyle: 'fixed',
       closeClass: 'close',
-      modalColor: 'black',
-      onClose : function() {
-
-      }
+      modalColor: 'black'
     });
   });
-  $("data_submit").click(function(event){
+  $("#data_submit").click(function(event){
     event.preventDefault();
     $("#popup_finish").bPopup({
       follow: [false, false], //x, y
       positionStyle: 'fixed',
       closeClass: 'close',
-      modalColor: 'black',
+      modalColor: 'black'
     });
-  });  
+  });
+  $(".finish_button, #close_button").click(function(event) {
+    event.preventDefault();
+    $("#popup_finish").bPopup().close();
+    $("#popup_input").bPopup().close();
+  });
+  $("#show_present_button").click(function(event) {
+    event.preventDefault();
+    $("#show_present").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+  });
+  $("#button_personal_policy").click(function(event) {
+    event.preventDefault();
+    $("#personal_policy").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+  });
 });

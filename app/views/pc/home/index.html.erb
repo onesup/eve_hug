@@ -4,11 +4,17 @@
     <%= image_tag("pc/event_name.png", class: "header_button") %>
   </div>
   <div class="contents">
-    <div class="title">
-      <%= image_tag("pc/title.png", class: "img_margin") %>
+    <div class="title_container">
+      <%= image_tag("pc/title.png", class: "title") %>
       <a href="#" id="message_button">
         <%= image_tag("pc/send_message_button.png", class: "img_margin") %>
       </a>
+    </div>
+    <div class="share">
+      <%= image_tag("pc/share_content.png") %>
+      <%= link_to "#", class: "share_button" do %>
+        <%= image_tag("pc/share.png") %>
+      <% end %>
     </div>
     <div class="letter_container">
       <%= image_tag("pc/letter.png") %>
@@ -18,7 +24,9 @@
     </div>
     <div class="under_letter">
       <%= image_tag("pc/message_to_user.png", class: "message") %>
-      <%= image_tag("pc/show_present_button.png", class: "show_present") %>
+      <%= link_to "#", id: "show_present_button" do %>
+        <%= image_tag("pc/show_present_button.png") %>
+      <% end %>
     </div>
     <div class="comment_list_container">
       <div class="comment_container">
@@ -58,29 +66,60 @@
     <div class="prizes">
       <%= image_tag("pc/prize_event.png") %>
     </div>
-    <!-- Popup -->
-    <div id="popup_finish">
-      <%= link_to "#", class: "close close_button" do%>
-        <%= image_tag("pc/popup/close.png") %>
-      <% end %>
-      <%= image_tag("pc/popup/thank.png", class: "thanks") %>
-      <br/>
-      <%= link_to "#", class: "close" do %>
-        <%= image_tag("pc/popup/finish_button.png") %>
-      <% end %>
+  </div>
+  <div class="footer">
+    <%= image_tag("pc/event_information.png", class: "information_event") %>
+    <%= link_to "#", id: "button_personal_policy" do %>
+      <%= image_tag("pc/button_personal_policy.png") %>
+    <% end %>
+  </div>
+
+
+  <!-- Popup -->
+  <div id="popup_finish">
+    <%= link_to "#", class: "close close_button" do%>
+      <%= image_tag("pc/popup/close.png") %>
+    <% end %>
+    <%= image_tag("pc/popup/thank.png", class: "thanks") %>
+    <%= link_to "#", class: "finish_button close" do %>
+      <%= image_tag("pc/popup/finish_button.png") %>
+    <% end %>
+  </div>
+  <div id="popup_input">
+    <%= link_to "#", class: "close close_button" do%>
+      <%= image_tag("pc/popup/close.png") %>
+    <% end %>
+    <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do |f|%>
+      <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
+      <%= image_submit_tag("pc/popup/btn_submit.png", id: "data_submit") %>
+    <% end %>
+  </div>
+  <div id="show_present">
+    <%= link_to "#", class: "close close_button" do%>
+      <%= image_tag("pc/popup/close.png") %>
+    <% end %>
+    <%= image_tag("pc/popup/present_title.png", class: "present_title") %>
+    <!-- thaoeusoahenuhaosnuhoeansu -->
+    <%= image_tag("", class: "image_eve") %>
+    <div class="explain_eve">
+      <!-- contents -->
     </div>
-    <div id="popup_input">
-      <%= link_to "#", class: "close close_button" do%>
-        <%= image_tag("pc/popup/close.png") %>
-      <% end %>
-      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do |f|%>
-        <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
-        <br/>
-        <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>
-      <% end %>
+    <div class="popup_footer">
+      <div class="pagging">
+        <%= link_to "#" do %><%= image_tag("pc/popup/pagging_icon_active.png", class: "pagging_icon") %><% end %>
+        <%= link_to "#" do %><%= image_tag("pc/popup/pagging_icon.png", class: "pagging_icon") %><% end %>
+      </div>
     </div>
   </div>
-  <div class="more_info">
-    <%= image_tag("pc/info_event.png") %>
+  <div id="personal_policy">
+    <%= link_to "#", class: "close close_button" do%>
+      <%= image_tag("pc/popup/close.png") %>
+    <% end %>
+    <div class="personal_policy_contents">asoheunsatoe u
+    aosehuao
+    oatsuoa
+    aoetshuao
+    ueastohusnaohetua
+    </div>
   </div>
 </div>
