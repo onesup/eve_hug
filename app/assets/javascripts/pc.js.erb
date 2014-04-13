@@ -8,5 +8,43 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-
+  $("#data_submit").click(function(event){
+    event.preventDefault();
+    $("#popup_finish").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+  });
+  $("#close_finish").click(function(event) {
+    event.preventDefault();
+    $("#popup_finish").bPopup().close();
+    $("#popup_input").bPopup().close();
+  });
+  $("#show_present_button").click(function(event) {
+    event.preventDefault();
+    $("#show_present").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+  });
+  $("#button_personal_policy").click(function(event) {
+    event.preventDefault();
+    $("#personal_policy").bPopup({
+      follow: [false, false], //x, y
+      positionStyle: 'fixed',
+      closeClass: 'close',
+      modalColor: 'black'
+    });
+  });
+  $(".image_paging").click(function(event) {
+    event.preventDefault();
+    $(".image_paging").removeClass('icon_active icon_none');
+    $(".image_paging").addClass('icon_none');
+    $(this).removeClass("icon_none");
+    $(this).addClass('icon_active');
+  });
 });

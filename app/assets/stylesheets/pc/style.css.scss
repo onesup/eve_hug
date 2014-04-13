@@ -18,7 +18,7 @@ img{
   margin-left: auto;
   margin-right: auto;
   background-image: asset-url("pc/bg-image.png");
-  background-repeat: repeat-x;
+  background-repeat: repeat-y;
 }
 
 .header{
@@ -46,8 +46,17 @@ img{
   text-align: center;
 }
 
-.img_margin{
-  margin: 15px 0px;
+.title{
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+.share{
+  margin: 20px auto;
+}
+
+.share_button{
+  margin-left: 30px;
 }
 
 .letter_container{
@@ -78,7 +87,7 @@ img{
   margin-top:-6px;
 }
 
-.show_present{
+#show_present_button{
   float: right;
   position: relative;
   top: 50%;
@@ -143,7 +152,7 @@ img{
   text-align: left;
 }
 
-.pagging{
+.paging{
   text-align: center;
   height: 20px;
   padding: 10px 0px;
@@ -154,11 +163,35 @@ img{
     color: #cccccc;
   }
 }
-.more_info{
+
+.prizes{
+  width: 100%;
+  margin-bottom: 50px;  
+}
+.centering{
+  display: block;
+  margin: 0 auto;
+}
+
+.footer{
   position: relative;
+  width: 810px;
+  margin: 0 auto;
   bottom: 0px;
   height: 249px;
-  padding-bottom: 0px;
+  padding-bottom: 20px;
+  background-color: white;
+}
+
+.information_event{
+  margin-top: 50px;
+  margin-left: 100px;  
+}
+
+#button_personal_policy{
+  display: block;
+  margin-top: 10px;
+  margin-left: 170px;
 }
 
 #popup_input{
@@ -179,9 +212,8 @@ img{
 }
 
 #data_submit{
-  position: absolute;
-  bottom: 55px;
-  margin-left: -74px;
+  display: block;
+  margin: 20px auto;  
 }
 
 #popup_finish{
@@ -198,7 +230,82 @@ img{
   top: 15px;
   right: 10px;
 }
+
 .thanks{
   margin-top: 60px;
   margin-bottom: 30px;
+}
+
+.finish_button{
+  display: block;
+}
+
+#show_present{
+  display: none;
+  position: relative;
+  width: 450px;
+  height: 550px;
+  background-color: white;
+  text-align: center;  
+}
+
+.present_title{
+  margin-top: 50px;
+}
+
+.image_bedcloths{
+  display: block;
+  margin-top: 30px;
+  max-height: 300px;
+}
+
+.explain_bedcloths{
+  margin: 10px auto;
+  height: 60px;
+}
+
+.image_paging_list{
+  margin: 0 auto;
+  bottom: 10px; 
+
+  a {
+    text-decoration:none;
+  }
+}
+
+.image_paging{
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  margin: 5px 0;
+}
+
+.icon_active{
+  background-image: asset-url("pc/popup/paging_icon_active.png");
+}
+
+.icon_none{
+  background-image: asset-url("pc/popup/paging_icon.png");
+}
+
+.popup_footer{
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
+#personal_policy{
+  display: none;
+  position: relative;
+  width: 450px;
+  height: 400px;
+  background-color: white;
+}
+.personal_policy_contents{
+  width: 410px;
+  height: 340px;
+  margin-top: 50px;
+  margin-left: 30px;
+  overflow-y: scroll;
+  scroll: invisible;
 }

@@ -1,0 +1,16 @@
+<div class="popup">
+	<div class="top">
+		<%= image_tag("mobile/popup/header.png", class:"popup_header") %>
+		<%= link_to "index", id: "escape" do %>
+			<%= image_tag("mobile/popup/escape.png", class:"popup_escape") %>
+		<% end %>
+	</div>
+	<div class="popup_content">
+		<%= image_tag("mobile/popup/p3_label.png", class:"popup_message_label") %>
+		<textarea class="popup_message_textarea" rows="10"></textarea>
+		<%= link_to "thanks" do %>
+			<%= image_tag("mobile/popup/p3_btn.png", class:"popup_message_btn") %>
+		<% end %>
+		<%= image_tag("mobile/popup/p3_label2.png", class:"popup_message_label2") %>
+	</div>
+</div>
