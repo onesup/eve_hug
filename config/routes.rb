@@ -26,10 +26,10 @@ Rails.application.routes.draw do
   
   namespace :mobile do
     get 'index' => 'home#index'
-    get 'thank_you' => 'home#thank_you'
-    get 'unique_error' => 'home#unique_error'
-    get 'terms' => 'home#terms'
-    get 'product' => 'home#product'
+    get 'personal_info' => 'home#popup_personal'
+    get 'message' => 'home#popup_message'
+    get 'show' => 'home#popup_show'
+    get 'thanks' => 'home#popup_thanks'
     resources :users
   end
   

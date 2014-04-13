@@ -1,0 +1,23 @@
+<div class="popup">
+	<div class="top">
+		<%= image_tag("mobile/popup/header.png", class:"popup_header") %>
+		<%= link_to "index", id: "escape" do %>
+			<%= image_tag("mobile/popup/escape.png", class:"popup_escape") %>
+		<% end %>
+	</div>
+	<div class="popup_content">
+		<%= image_tag("mobile/popup/p2_label.png", class:"popup_show_label") %>
+		<div class="popup_image_show">
+			<%= image_tag("mobile/popup/p2_image_1.png", class:"popup_image_1") %>
+			<%= image_tag("mobile/popup/p2_image_2.png", class:"popup_image_2") %>
+			<%= image_tag("mobile/popup/p2_image_3.png", class:"popup_image_3") %>
+		</div>
+		<div id="popup_list_btnBox">
+			<%= link_to "#" do %><span id="popup_list_btn_id_1" class="popup_list_btn">1</span><% end %>
+			<%= link_to "#" do %><span id="popup_list_btn_id_2" class="popup_list_btn">2</span><% end %>
+			<%= link_to "#" do %><span id="popup_list_btn_id_3" class="popup_list_btn">3</span><% end %><!--
+			<%= link_to "#" do %><span id="popup_list_btn_id_4" class="popup_list_btn">4</span><% end %>
+			<%= link_to "#" do %><span id="popup_list_btn_id_5" class="popup_list_btn">5</span><% end %>-->
+		</div>
+	</div>
+</div>
