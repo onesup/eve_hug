@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :messages
   has_many :access_logs
-  has_one :coupon
+  has_many :comments
   validates :agree, acceptance: true
   validates :agree2, acceptance: true
   validates :name, presence: true

@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
-
   namespace :admin do
     get '/' => 'dashboard#index'
     resources :traffic_logs
     resources :users do
-      collection do
-        get 'couponused'
-      end
-    end
-    resources :coupons do
-      member do
-        get 'send_message'
-      end
     end
     resources :viral_actions 
+    resources :daily_cards
+    resources :comments
   end
 
   namespace :fb do
@@ -33,10 +26,10 @@ Rails.application.routes.draw do
   
   namespace :mobile do
     get 'index' => 'home#index'
-    get 'thank_you' => 'home#thank_you'
-    get 'unique_error' => 'home#unique_error'
-    get 'terms' => 'home#terms'
-    get 'product' => 'home#product'
+    get 'personal_info' => 'home#popup_personal'
+    get 'message' => 'home#popup_message'
+    get 'show' => 'home#popup_show'
+    get 'thanks' => 'home#popup_thanks'
     resources :users
   end
   
@@ -47,11 +40,6 @@ Rails.application.routes.draw do
 
   root 'web_switch#index'
 
-  get "/:code", to:"coupons#show", contraints:{code: /[a-z]{5}-\d{4}/}, as: "coupon"
-  get "/:code/edit", to:"coupons#edit", contraints:{code: /[a-z]{5}-\d{4}/}, as: "edit_coupon"
-  put "/:code", to:"coupons#update", contraints:{code: /[a-z]{5}-\d{4}/}, as: "update_coupon"
   # resources :users
   devise_for :users
-  resources :coupons, except: [:update, :edit, :show] do
-  end
 end

@@ -20,6 +20,7 @@
       <%= image_tag("pc/letter.png") %>
       <div class="letter_contents">
         
+        <%= image_tag(DailyCard.today_image.card_image_pc)%>
       </div>
     </div>
     <div class="under_letter">
@@ -29,38 +30,21 @@
       <% end %>
     </div>
     <div class="comment_list_container">
-      <div class="comment_container">
-        <div class="profile_image">
-          <%= image_tag("") %>
+      <% @comments.each do |comment| %>
+        <div class="comment_container">
+          <div class="profile_image">
+            <%= image_tag("") %>
+          </div>
+          <div class="infomation_comment">
+            <div class="author_comment"><%= comment.user.name %></div>
+            <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
+            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+          </div>
         </div>
-        <div class="infomation_comment">
-          <div class="author_comment"></div>
-          <div class="date_comment"></div>
-          <div class="comment"></div>
-        </div>
-      </div>
-      <div class="comment_container">
-        <div class="profile_image">
-          <%= image_tag("") %>
-        </div>
-        <div class="infomation_comment">
-          <div class="author_comment"></div>
-          <div class="date_comment"></div>
-          <div class="comment"></div>
-        </div>
-      </div>
-      <div class="comment_container">
-        <div class="profile_image">
-          <%= image_tag("") %>
-        </div>
-        <div class="infomation_comment">
-          <div class="author_comment"></div>
-          <div class="date_comment"></div>
-          <div class="comment"></div>
-        </div>
-      </div>
-      <div class="pagging">
-        number list <!-- rails?  -->     
+      <% end %>
+    </div>
+      <div class="paging">
+        <%= paginate @comments %>
       </div>
     </div>
     <div class="prizes">
@@ -76,24 +60,26 @@
 
 
   <!-- Popup -->
-  <div id="popup_finish">
-    <%= link_to "#", class: "close close_button" do%>
-      <%= image_tag("pc/popup/close.png") %>
-    <% end %>
-    <%= image_tag("pc/popup/thank.png", class: "thanks") %>
-    <%= link_to "#", class: "finish_button close" do %>
-      <%= image_tag("pc/popup/finish_button.png") %>
-    <% end %>
-  </div>
-  <div id="popup_input">
-    <%= link_to "#", class: "close close_button" do%>
-      <%= image_tag("pc/popup/close.png") %>
-    <% end %>
-    <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do |f|%>
-      <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
-      <%= image_submit_tag("pc/popup/btn_submit.png", id: "data_submit") %>
-    <% end %>
-  </div>
+    <div id="popup_finish">
+      <%= link_to "#", class: "close close_button" do%>
+        <%= image_tag("pc/popup/close.png") %>
+      <% end %>
+      <%= image_tag("pc/popup/thank.png", class: "thanks") %>
+      <br/>
+      <%= link_to "#", id: "close_finish", class: "close" do %>
+        <%= image_tag("pc/popup/finish_button.png") %>
+      <% end %>
+    </div>
+    <div id="popup_input">
+      <%= link_to "#", class: "close close_button" do%>
+        <%= image_tag("pc/popup/close.png") %>
+      <% end %>
+      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do %>
+        <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
+        <br/>
+        <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>
+      <% end %>
+    </div>
   <div id="show_present">
     <%= link_to "#", class: "close close_button" do%>
       <%= image_tag("pc/popup/close.png") %>
@@ -105,9 +91,9 @@
       <!-- contents -->
     </div>
     <div class="popup_footer">
-      <div class="pagging">
-        <%= link_to "#" do %><%= image_tag("pc/popup/pagging_icon_active.png", class: "pagging_icon") %><% end %>
-        <%= link_to "#" do %><%= image_tag("pc/popup/pagging_icon.png", class: "pagging_icon") %><% end %>
+      <div class="paging">
+        <%= link_to "#" do %><%= image_tag("pc/popup/paging_icon_active.png", class: "paging_icon") %><% end %>
+        <%= link_to "#" do %><%= image_tag("pc/popup/paging_icon.png", class: "paging_icon") %><% end %>
       </div>
     </div>
   </div>
@@ -115,11 +101,7 @@
     <%= link_to "#", class: "close close_button" do%>
       <%= image_tag("pc/popup/close.png") %>
     <% end %>
-    <div class="personal_policy_contents">asoheunsatoe u
-    aosehuao
-    oatsuoa
-    aoetshuao
-    ueastohusnaohetua
+    <div class="personal_policy_contents">
     </div>
   </div>
 </div>

@@ -15,4 +15,12 @@ module ApplicationHelper
     # today = Date.parse("2014. 4. 2")
     (today.month..4).to_a
   end
+  
+  def shorten_helper(len, msg)
+    if msg.length >= len
+      msg[0..len]+"..."
+    else
+      msg
+    end
+  end
 end

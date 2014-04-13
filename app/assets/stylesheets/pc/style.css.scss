@@ -69,7 +69,7 @@ img{
   position: absolute;
   width: 386px;
   height: 210px;
-  top: 50px;
+  top: 49px;
   left: 118px;
 }
 
@@ -137,7 +137,7 @@ img{
 
 .date_comment{
   float: left;
-  width: 80px;
+  width: 120px;
   height: 20px;
   margin-left: 10px;
   color: #c8c8c8;
@@ -152,11 +152,16 @@ img{
   text-align: left;
 }
 
-.pagging{
+.paging{
   text-align: center;
   height: 20px;
   padding: 10px 0px;
   color: #cccccc;
+  
+  a {
+    text-decoration:none;
+    color: #cccccc;
+  }
 }
 .footer{
   position: relative;
@@ -247,12 +252,12 @@ img{
   height: 60px;
 }
 
-.pagging{
+.paging{
   margin: 0 auto;
   bottom: 10px; 
 }
 
-.pagging_icon{
+.paging_icon{
   margin: 5px 0;
 }
 
