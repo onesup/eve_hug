@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :viral_actions 
     resources :daily_cards
     resources :comments
+    resources :channels
   end
 
   namespace :fb do

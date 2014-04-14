@@ -1,0 +1,57 @@
+<%= form_for([:admin, @channel]) do |f| %>
+  <% if @channel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@channel.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @channel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row-fluid">
+  <!-- block -->
+  <div class="block">
+      <div class="navbar navbar-inner block-header">
+          <div class="muted pull-left">채널 관리</div>
+      </div>
+      <div class="block-content collapse in">
+          <div class="span12">
+               <form class="form-horizontal">
+                <fieldset>
+                  
+                  <div class="control-group">
+                    <label class="control-label" for="focusedInput">채널코드</label>
+                    <span></span>
+                    <div class="controls">
+                      <%= f.text_field :code %>
+                    </div>
+                    
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">채널명</label>
+                    <div class="controls">
+                      <%= f.text_field :name %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">정렬 순서</label>
+                    <div class="controls">
+                      <%= f.text_field :sort_order %>
+                    </div>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.submit class: "btn btn-primary"  %>
+                    <%= link_to "취소", admin_path, class: "btn"%>
+                  </div>
+                </fieldset>
+              </form>
+
+          </div>
+      </div>
+  </div>
+  <!-- /block -->
+</div>  
+  
+<% end %>

@@ -26,3 +26,8 @@ Comment.create!(user: a, message:"아빠 언제나 감사해요")
 Comment.create!(user: b, message:"아빠 언제나 감사해요")
 Comment.create!(user: c, message:"아빠 언제나 감사해요")
 Comment.create!(user: d, message:"아빠 언제나 감사해요")
+
+Channel.create!(code: "fb", name: "페이스북", sort_order: 1)
+Channel.create!(code: "ks", name: "카카오스토리", sort_order: 2)
+Channel.create!(code: "kt", name: "카카오톡", sort_order: 3)
+Channel.create!(code: "tw", name: "트위터", sort_order: 4)
