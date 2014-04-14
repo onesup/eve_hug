@@ -41,6 +41,6 @@ Rails.application.routes.draw do
 
   root 'web_switch#index'
 
-  # resources :users
-  devise_for :users
+  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" } do
+  end
 end

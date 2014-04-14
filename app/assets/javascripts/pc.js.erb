@@ -1,13 +1,13 @@
 $(document).ready(function(){
-  $("#message_button").click(function(event) {
-    event.preventDefault();
-    $("#popup_input").bPopup({
-      follow: [false, false], //x, y
-      positionStyle: 'fixed',
-      closeClass: 'close',
-      modalColor: 'black'
-    });
-  });
+  // $("#message_button").click(function(event) {
+ //    event.preventDefault();
+ //    $("#popup_input").bPopup({
+ //      follow: [false, false], //x, y
+ //      positionStyle: 'fixed',
+ //      closeClass: 'close',
+ //      modalColor: 'black'
+ //    });
+ //  });
   $("#data_submit").click(function(event){
     event.preventDefault();
     $("#popup_finish").bPopup({
@@ -46,5 +46,29 @@ $(document).ready(function(){
     $(".image_paging").addClass('icon_none');
     $(this).removeClass("icon_none");
     $(this).addClass('icon_active');
+  });
+  $("#message_button").bind("click", function(e) {
+    e.preventDefault();
+    var opts = {
+      lines: 13, // The number of lines to draw
+      length: 20, // The length of each line
+      width: 10, // The line thickness
+      radius: 5, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)spin.js
+      rotate: 0, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: '#fff', // #rgb or #rrggbb or array of colors
+      speed: 1, // Rounds per second
+      trail: 60, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: false, // Whether to use hardware acceleration
+      className: 'spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      left: 57-36,
+      top: 15-36
+    };
+    var target = document.getElementById('facebook_login_button');
+    var spinner = new Spinner(opts).spin(target);
+    window.location.href = "/users/auth/facebook";
   });
 });
