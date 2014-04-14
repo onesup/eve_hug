@@ -278,14 +278,11 @@ img{
   width: 21px;
   height: 21px;
   margin: 5px 0;
+  background-image: asset-url("pc/popup/paging_icon.png");
 }
 
 .icon_active{
   background-image: asset-url("pc/popup/paging_icon_active.png");
-}
-
-.icon_none{
-  background-image: asset-url("pc/popup/paging_icon.png");
 }
 
 .popup_footer{
