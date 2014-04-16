@@ -28,21 +28,22 @@ gem 'sucker_punch', '~> 1.0'
 # gem 'sasha'
 gem 'font-awesome-rails'
 gem 'kaminari'
-gem 'debugger', group: [:development, :test]
 # gem 'dragonfly', "~>1.0.3"
 gem 'koala'
 gem 'thor', '0.19.0'
 gem 'carrierwave' #image uploader
 # gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
 group :development do
-  gem 'guard-rails',        group: :development
-  gem 'pry',                group: :development
-  gem 'quiet_assets',       group: :development
+  gem 'guard-rails'
+  gem 'pry'
+  gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rbenv', '2.0.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'spring',             group: :development  
+  gem 'spring'
+  gem 'meta_request'
+  gem 'debugger'
 end
 group :test do
   gem 'capybara'

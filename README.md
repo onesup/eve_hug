@@ -23,3 +23,6 @@ set :ssh_options, {keys: %w(/Users/onesup/.ssh/ids/hug.mnv.kr/deployer/id_rsa)}
 cd ./
 vi .gitignore
 ```
+```
+페북 로그인 코드: http://www.maxgillett.com/post/28504483668/devise-omniauth-facebook-js-sdk-tutorial
+```

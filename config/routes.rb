@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'dashboard#index'
     resources :traffic_logs
-    resources :users do
-    end
+    resources :users
     resources :viral_actions 
     resources :daily_cards
     resources :comments
@@ -39,8 +38,7 @@ Rails.application.routes.draw do
   get 'web_switch' => 'web_switch#index'
   get 'fb_switch' => 'fb_switch#index'
 
+  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  
   root 'web_switch#index'
-
-  devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" } do
-  end
 end

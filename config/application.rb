@@ -21,5 +21,9 @@ module EveHug
       'mobile.css', 'mobile.js',
       'facebook.css', 'facebook.js'
     ]
+    console do
+      require "pry"
+      config.console = Pry
+    end
   end
 end
