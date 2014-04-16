@@ -8,10 +8,10 @@
 if User.find_by_email("admin@admin.com").nil?
   User.create!(email:"admin@admin.com", password:"aaabbb", name:"관리자", phone:"010-9999-9999", birthday: Time.now) 
 end
-a = User.create!(email:"admin@admin.com", password:"aaabbb", name:"김이브", phone:"010-9998-9999", birthday: Time.now) 
-b = User.create!(email:"admin@admin.com", password:"aaabbb", name:"김자리", phone:"010-9997-9999", birthday: Time.now) 
-c = User.create!(email:"admin@admin.com", password:"aaabbb", name:"박이브", phone:"010-9996-9999", birthday: Time.now) 
-d = User.create!(email:"admin@admin.com", password:"aaabbb", name:"박자리", phone:"010-9995-9999", birthday: Time.now) 
+a = User.create!(email:"m1@evezary.co.kr", password:"aaabbb", name:"김이브", phone:"010-9998-9999", birthday: Time.now) 
+b = User.create!(email:"m2@evezary.co.kr", password:"aaabbb", name:"김자리", phone:"010-9997-9999", birthday: Time.now) 
+c = User.create!(email:"m3@evezary.co.kr", password:"aaabbb", name:"박이브", phone:"010-9996-9999", birthday: Time.now) 
+d = User.create!(email:"m4@evezary.co.kr", password:"aaabbb", name:"박자리", phone:"010-9995-9999", birthday: Time.now) 
 
 daily_card = DailyCard.new()
 daily_card.card_image_pc = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')

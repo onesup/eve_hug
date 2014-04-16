@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require_self
- *= require credit
  *= require pc/style
  *= require pc/icheck/skins/all
  *= require pc/icheck/skins/minimal/_all
