@@ -1,0 +1,2 @@
+module Pc::CommentsHelper
+end
