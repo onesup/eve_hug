@@ -33,12 +33,20 @@ class User < ActiveRecord::Base
   
   def apply_omniauth(auth)
       self.email = auth.extra.raw_info.email
+      self.profile_picture = auth.info.image
+      self.gender = auth.extra.raw_info.gender
+      self.birthday = DateTime.parse(auth.extra.raw_info.birthday)
+      self.facebook_url = auth.extra.raw_info.link
+      
       authentications.build(
-        provider: auth.provider, 
+        provider: auth.provider,
         uid: auth.uid, 
         token: auth.extension.token)
+      
+     
+        
     end
-  
+    
   def self.fb_username_to_fb_id(username)
     username = username.gsub("https://www.facebook.com","").gsub("https://facebook.com","")
     username = username.gsub("http://www.facebook.com","").gsub("http://facebook.com","")
