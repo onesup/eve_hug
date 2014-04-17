@@ -28,8 +28,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
     
-    render :json => { :success => (current_user ? true : false), 
-                      :current_user => current_user.as_json(:only => [:email]) }
+    render json: { 
+      success: (current_user ? true : false), 
+      current_user: current_user.as_json(only: [:email]) }
   end
   
   def extend_fb_token(token)
@@ -46,9 +47,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
     request = Net::HTTP::Get.new(uri.request_uri)
-
     response = http.request(request)
     matched_response = /access_token=(.+)&expires=(.+)/.match(response.body)
     parsed_response = Hash["extension", Hash["token", matched_response[1], "expiry", matched_response[2]]]

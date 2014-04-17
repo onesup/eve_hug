@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   # dragonfly_accessor :last_sign_in_ip
   # image_accessor :last_sign_in_ip
   devise :database_authenticatable, :omniauthable, :omniauth_providers => [:facebook]# , :confirmable 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.find_by_email(auth.info.email)
     unless user
       user = User.new( 
