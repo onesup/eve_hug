@@ -32,7 +32,7 @@
       <% @comments.each do |comment| %>
         <div class="comment_container">
           <div class="profile_image">
-            <%= image_tag("") %>
+            <%= image_tag comment.user.profile_picture %>
           </div>
           <div class="infomation_comment">
             <div class="author_comment"><%= comment.user.name %></div>
