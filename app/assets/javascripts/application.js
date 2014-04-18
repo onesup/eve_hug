@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require credit
 //= require jquery
 //= require jquery_ujs
 // require turbolinks
@@ -21,4 +22,5 @@
 //= require jquery.maskedinput.min
 //= require jquery.modal
 //= require ZeroClipboard
+//= require spin
 //= require pc
