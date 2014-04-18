@@ -1,4 +1,18 @@
+function user_signed_in(){
+};		
+
 $(document).ready(function(){
+  $('#message_button').click(function(e) {
+		e.preventDefault();
+	  $.getJSON('/user_signed_in').done(function(json) {
+	    if(json.result == true){
+				message_input_popup();
+	    }else{
+	    	fb_login();
+	    }
+	  });		
+  });
+	
   $("#data_submit").click(function(event){
     event.preventDefault();
     $("#popup_finish").bPopup({
@@ -70,3 +84,22 @@ function fb_login_spinner(){
   var spinner = new Spinner(opts).spin(target);
   return spinner;   
 }; 
+function fb_login(){
+  var spinner = fb_login_spinner();
+  FB.login(function(response) {
+    if (response.authResponse) {
+      // since we have cookies enabled, this request will allow omniauth to parse
+      // out the auth code from the signed request in the fbsr_XXX cookie
+      spinner.stop();
+      $.getJSON('/users/auth/facebook/callback', function(json) {
+        if(json.success === true)
+          message_input_popup();
+        else{
+          alert("sorry");
+        }
+        $('#results').html(JSON.stringify(json));
+        // Do some other stuff here (call more json, load in more elements, etc)
+      });
+    }
+  }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
+};
