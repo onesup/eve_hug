@@ -13,15 +13,15 @@ $(document).ready(function(){
 	  });		
   });
 	
-  $("#data_submit").click(function(event){
-    event.preventDefault();
-    $("#popup_finish").bPopup({
-      follow: [false, false], //x, y
-      positionStyle: 'fixed',
-      closeClass: 'close',
-      modalColor: 'black'
-    });
-  });
+  // $("#data_submit").click(function(event){
+//     event.preventDefault();
+//     $("#popup_finish").bPopup({
+//       follow: [false, false], //x, y
+//       positionStyle: 'fixed',
+//       closeClass: 'close',
+//       modalColor: 'black'
+//     });
+//   });
   $("#close_finish").click(function(event) {
     event.preventDefault();
     $("#popup_finish").bPopup().close();
@@ -52,6 +52,37 @@ $(document).ready(function(){
     $(this).removeClass("icon_none");
     $(this).addClass('icon_active');
   });
+  $("#new_comment").bind("ajax:success", function(evt,data,status,xhr){
+    response = JSON.parse(xhr.responseText);
+    if(response.status==="success"){
+      $("#popup_finish").bPopup({
+          follow: [false, false], //x, y
+          positionStyle: 'fixed',
+          closeClass: 'close',
+          modalColor: 'black'
+        });
+    }else {
+    }
+
+  }).bind('ajax:error',function(evt,xhr,status,error){
+    var $form = $(this),errors,errorText;
+    errors = $.parseJSON(xhr.responseText);
+
+    // if(errors.status === "duplicated"){
+  //     $("#popup_fin2").bPopup({
+  //       closeClass: 'b-close',
+  //       modalColor: '#000',
+  //       follow: [false, false], //x, y
+  //       position: ['auto', 70], //x, y
+  //       onClose: function(){$("#popup_info").bPopup().close();}
+  //     });
+  //   }
+  //   else{
+  //     validation(errors);
+  //   }
+    
+  });
+  
 });
 function message_input_popup(){
   $("#popup_input").bPopup({

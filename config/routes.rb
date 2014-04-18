@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   namespace :pc do
     get 'index' => 'home#index'
+    resources :comments
     resources :users do
       collection do
         get 'delete'
