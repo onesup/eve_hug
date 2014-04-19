@@ -1,7 +1,7 @@
 <div class="container" >
   <div class="header">
     <%= image_tag("pc/logo.png", class: "header_logo") %>
-    <%= image_tag("pc/event_name.png", class: "header_button") %>
+    <%= image_tag("pc/event_name.png", class: "header_event_name") %>
   </div>
   <div class="contents">
     <div class="title_container">
@@ -17,7 +17,8 @@
       <% end %>
     </div>
     <div class="letter_container">
-      <%= image_tag("pc/letter.png") %>
+      <%= image_tag("pc/letter_back.png", class: "letter_back_image") %>
+      <%= image_tag("pc/letter_front.png", class: "letter_front_image") %>
       <div class="letter_contents">
         <%#= image_tag(DailyCard.today_image.card_image_pc) %>
       </div>
@@ -83,7 +84,6 @@
       <%= image_tag("pc/popup/close.png") %>
     <% end %>
     <%= image_tag("pc/popup/present_title.png", class: "present_title") %>
-    <!-- thaoeusoahenuhaosnuhoeansu -->
     <%= image_tag("", class: "image_bedcloths") %>
     <div class="explain_bedcloths">
       <!-- contents -->
