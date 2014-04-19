@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   end
   
   def apply_omniauth(auth)
+      self.name = auth.extra.raw_info.name
       self.email = auth.extra.raw_info.email
       self.profile_picture = auth.info.image
       self.gender = auth.extra.raw_info.gender

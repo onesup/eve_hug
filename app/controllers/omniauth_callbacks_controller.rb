@@ -31,12 +31,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     render json: { 
       success: (current_user ? true : false), 
       current_user: current_user.as_json(only: [:email]) }
-  
-  
-  
-  
-  
-  end
+    end
   
   def extend_fb_token(token)
     # can be called once a day to extend fb access token

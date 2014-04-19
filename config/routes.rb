@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   namespace :pc do
     get 'index' => 'home#index'
+    resources :comments
     resources :users do
       collection do
         get 'delete'
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
 
   get 'web_switch' => 'web_switch#index'
   get 'fb_switch' => 'fb_switch#index'
+  get 'user_signed_in' => 'user_sessions#user_signed_in'
 
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
   

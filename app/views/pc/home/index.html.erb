@@ -69,16 +69,7 @@
         <%= image_tag("pc/popup/finish_button.png") %>
       <% end %>
     </div>
-    <div id="popup_input">
-      <%= link_to "#", class: "close close_button" do%>
-        <%= image_tag("pc/popup/close.png") %>
-      <% end %>
-      <%= form_for([:pc, @user], remote: true, html: {"data-type" => "json"}) do %>
-        <%= text_area_tag(:message, "엄마 감사해요", class: "input_textarea") %>
-        <br/>
-        <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>
-      <% end %>
-    </div>
+   <%= render "popup_input"%>
   <div id="show_present">
     <%= link_to "#", class: "close close_button" do%>
       <%= image_tag("pc/popup/close.png") %>

@@ -1,20 +1,34 @@
+function user_signed_in(){
+};		
+
 $(document).ready(function(){
-  $("#data_submit").click(function(event){
-    event.preventDefault();
-    $("#popup_finish").bPopup({
-      follow: [false, false], //x, y
-      positionStyle: 'fixed',
-      closeClass: 'close',
-      modalColor: 'black'
-    });
+  $('#message_button').click(function(e) {
+		e.preventDefault();
+	  $.getJSON('/user_signed_in').done(function(json) {
+	    if(json.result == true){
+				message_input_popup();
+	    }else{
+	    	fb_login();
+	    }
+	  });		
   });
-  $("#close_finish").click(function(event) {
-    event.preventDefault();
+	
+  // $("#data_submit").click(function(event){
+//     event.preventDefault();
+//     $("#popup_finish").bPopup({
+//       follow: [false, false], //x, y
+//       positionStyle: 'fixed',
+//       closeClass: 'close',
+//       modalColor: 'black'
+//     });
+//   });
+  $("#close_finish").click(function(e) {
+    e.preventDefault();
     $("#popup_finish").bPopup().close();
     $("#popup_input").bPopup().close();
   });
-  $("#show_present_button").click(function(event) {
-    event.preventDefault();
+  $("#show_present_button").click(function(e) {
+    e.preventDefault();
     $("#show_present").bPopup({
       follow: [false, false], //x, y
       positionStyle: 'fixed',
@@ -22,8 +36,8 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-  $("#button_personal_policy").click(function(event) {
-    event.preventDefault();
+  $("#button_personal_policy").click(function(e) {
+    e.preventDefault();
     $("#personal_policy").bPopup({
       follow: [false, false], //x, y
       positionStyle: 'fixed',
@@ -31,11 +45,42 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-  $(".image_paging").click(function(event) {
-    event.preventDefault();
+  $(".image_paging").click(function(e) {
+    e.preventDefault();
     $(".image_paging").removeClass('icon_active');
     $(this).addClass('icon_active');
   });
+  $("#new_comment").bind("ajax:success", function(evt,data,status,xhr){
+    response = JSON.parse(xhr.responseText);
+    if(response.status==="success"){
+      $("#popup_finish").bPopup({
+          follow: [false, false], //x, y
+          positionStyle: 'fixed',
+          closeClass: 'close',
+          modalColor: 'black'
+        });
+    }else {
+    }
+
+  }).bind('ajax:error',function(evt,xhr,status,error){
+    var $form = $(this),errors,errorText;
+    errors = $.parseJSON(xhr.responseText);
+
+    // if(errors.status === "duplicated"){
+  //     $("#popup_fin2").bPopup({
+  //       closeClass: 'b-close',
+  //       modalColor: '#000',
+  //       follow: [false, false], //x, y
+  //       position: ['auto', 70], //x, y
+  //       onClose: function(){$("#popup_info").bPopup().close();}
+  //     });
+  //   }
+  //   else{
+  //     validation(errors);
+  //   }
+    
+  });
+  
 });
 function message_input_popup(){
   $("#popup_input").bPopup({
@@ -67,4 +112,23 @@ function fb_login_spinner(){
   var target = document.getElementById('message_button');
   var spinner = new Spinner(opts).spin(target);
   return spinner;   
-}; 
+};
+function fb_login(){
+  var spinner = fb_login_spinner();
+  FB.login(function(response) {
+    if (response.authResponse) {
+      // since we have cookies enabled, this request will allow omniauth to parse
+      // out the auth code from the signed request in the fbsr_XXX cookie
+      spinner.stop();
+      $.getJSON('/users/auth/facebook/callback', function(json) {
+        if(json.success === true)
+          message_input_popup();
+        else{
+          alert("sorry");
+        }
+        $('#results').html(JSON.stringify(json));
+        // Do some other stuff here (call more json, load in more elements, etc)
+      });
+    }
+  }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
+};
