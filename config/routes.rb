@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :mobile do
+  get 'comments/new'
+  end
+
   namespace :admin do
     get '/' => 'dashboard#index'
     resources :traffic_logs
@@ -18,11 +22,6 @@ Rails.application.routes.draw do
   namespace :pc do
     get 'index' => 'home#index'
     resources :comments
-    resources :users do
-      collection do
-        get 'delete'
-      end
-    end
   end
   
   namespace :mobile do
@@ -31,7 +30,7 @@ Rails.application.routes.draw do
     get 'message' => 'home#popup_message'
     get 'show' => 'home#popup_show'
     get 'thanks' => 'home#popup_thanks'
-    resources :users
+    resources :comments, only: [:new, :create]
   end
   
   resources :viral_actions

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Mobile::UsersController do
+describe Mobile::CommentsController do
 
   describe "GET 'new'" do
     it "returns http success" do

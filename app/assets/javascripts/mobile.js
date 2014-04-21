@@ -24,4 +24,5 @@
 // jquery.meio.mask.js
 // require jquery.inputmask
 //= require kakao.link.js
+//= require spin
 //= require mobile/mobile.js
