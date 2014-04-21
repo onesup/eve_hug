@@ -29,8 +29,22 @@
 			<% end %>
 	</div>
 	<div class="comment">
-		댓글 영역
+		<% @comments.each do |comment|%>
+	    <div class="comment_container">
+	      <div class="profile_image">
+	        <%= image_tag comment.user.profile_picture %>
+	      </div>
+	      <div class="infomation_comment">
+	        <div class="author_comment"><%= comment.user.name %></div>
+	        <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
+	        <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+	      </div>
+	    </div>
+		<% end %>
 	</div>
+  <div class="paging">
+    <%= paginate @comments %>
+  </div>
 	<div class="gift">
 		<%= image_tag("mobile/main/gift.png", class: "gift_element") %>
 	</div>
