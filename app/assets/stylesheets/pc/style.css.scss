@@ -81,10 +81,10 @@ img{
 
 .letter_contents{
   position: absolute;
-  width: 386px;
-  height: 210px;
-  top: 20px;
-  left: 110px;
+  width: 388px;
+  height: 227px;
+  top: 0px;
+  left: 111px;
 }
 
 .under_letter{
@@ -218,13 +218,25 @@ img{
 }
 
 .input_textarea{
+	float: left;
   margin-top: 100px;
   width: 350px;
   height: 120px;
   border: 1px solid #dddddd;
   resize: none;
+	margin-left: 46px;
+	margin-bottom: 20px;
 }
-
+.presence-error{
+	border: 1px solid #ff3333;
+	float: left;
+	margin-left: 46px;
+	margin-bottom: 20px;
+}
+.star{
+	float: left;
+	margin-top: 100px;
+}
 #data_submit{
   display: block;
   margin: 20px auto;  

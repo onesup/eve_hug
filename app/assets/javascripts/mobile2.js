@@ -11,4 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
+//= require kakao.link.js
+//= require spin
 //= require mobile/mobile.js

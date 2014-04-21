@@ -1,7 +1,8 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  
   scope :published, -> { where(status: "show") } 
+  validates :post_message, presence: true
+  
   def post_message
     self.message
   end
@@ -14,9 +15,7 @@ class Comment < ActiveRecord::Base
     begin 
       api.put_wall_post(self.post_message)
     rescue Koala::Facebook::AuthenticationError
-      Rails.logger.info "@@@@@@@@@@@@@@@@@"
       Rails.logger.info "Koala::Facebook::AuthenticationError"
-      Rails.logger.info "@@@@@@@@@@@@@@@@@"
     end
   end
 end

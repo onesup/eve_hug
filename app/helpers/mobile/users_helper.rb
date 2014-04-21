@@ -1,2 +1,0 @@
-module Mobile::UsersHelper
-end

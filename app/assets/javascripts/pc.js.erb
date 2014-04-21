@@ -65,6 +65,7 @@ $(document).ready(function(){
   }).bind('ajax:error',function(evt,xhr,status,error){
     var $form = $(this),errors,errorText;
     errors = $.parseJSON(xhr.responseText);
+		validation(errors);
 
     // if(errors.status === "duplicated"){
   //     $("#popup_fin2").bPopup({
@@ -132,3 +133,11 @@ function fb_login(){
     }
   }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
 };
+
+function validation(errors){
+	console.log(errors);
+	$(".star").empty();
+		// $('input[data-name ='+error+']').parent().find('span').remove();
+		$('textarea[data-name="post_message"]').addClass("presence-error")
+	$('textarea[data-name="post_message"]').after("<p class='star post_message'>*</p>");
+}
