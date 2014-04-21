@@ -3,7 +3,7 @@
 		<%= image_tag("pc/popup/close.png") %>
   <% end %>
   <%= form_for([:pc, @comment], remote: true, html: {"data-type" => "json"}) do |f| %>
-	  <%= f.text_area(:message, {value: "엄마 감사해요", class: "input_textarea"}) %>
+	  <%= f.text_area(:message, {value: "엄마 감사해요", class: "input_textarea", "data-name" => "post_message"}) %>
 	  <br/>
 	  <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit"}) %>
   <% end %>

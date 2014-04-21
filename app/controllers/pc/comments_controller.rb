@@ -9,7 +9,7 @@ class Pc::CommentsController < ApplicationController
         format.json { render json: {status: "success"}, status: :created   }
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
