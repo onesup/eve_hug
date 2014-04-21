@@ -38,8 +38,8 @@ d = User.create!(
   birthday: Time.now) 
 
 daily_card = DailyCard.new()
-daily_card.card_image_pc = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
-daily_card.card_image_mobile = open(Rails.root.to_s + "/public/images/" + 'dailycard.png')
+daily_card.card_image_pc = open(Rails.root.to_s + "/public/images/" + 'daily_card.png')
+daily_card.card_image_mobile = open(Rails.root.to_s + "/public/images/" + 'daily_card.png')
 daily_card.save()
 
 Comment.create!(user: a, message:"엄마 언제나 감사해요")
