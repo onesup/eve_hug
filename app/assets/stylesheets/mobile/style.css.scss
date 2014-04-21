@@ -3,7 +3,13 @@ body{
 	background-color: #EBDCCE;
 	background-image: asset-url('mobile/main/background.png');
 }
-
+.contain{
+	width: 100%;
+}
+.content{
+	width: 100%;
+	position: relative;
+}
 .header{
 	width: 100%;
 	margin-top: 3%;
@@ -193,3 +199,14 @@ a:link{
 .popup_message_label2{
 	width: 80%;
 }
+
+.letter_contents{
+  position: absolute;
+  top: 10%;
+  left: 18%;
+	img.letter-image{
+	  width: 100%;
+	  height: 18%;
+	}
+}
+
