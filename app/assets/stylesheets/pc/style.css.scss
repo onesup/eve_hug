@@ -34,7 +34,7 @@ img{
   margin-left: 20px;
 }
 
-.header_button{
+.header_event_name{
   float: right;
   position: relative;
   top: 50%;
@@ -52,25 +52,39 @@ img{
 }
 
 .share{
-  margin: 20px auto;
+  margin: 50px auto;
 }
 
 .share_button{
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 .letter_container{
   position: relative;
+  width: 660px;
+  height: 350px;
   left: 10px;
   margin: 15px 0px;
+}
+
+.letter_back_image{
+  position: absolute;
+  left: 0px;
+}
+
+.letter_front_image{
+  position: absolute;
+  left: 102px;
+  top: 136px;
+  z-index: 1;
 }
 
 .letter_contents{
   position: absolute;
   width: 386px;
   height: 210px;
-  top: 49px;
-  left: 118px;
+  top: 20px;
+  left: 110px;
 }
 
 .under_letter{
@@ -207,7 +221,7 @@ img{
   margin-top: 100px;
   width: 350px;
   height: 120px;
-  border: 0px transparent;
+  border: 1px solid #dddddd;
   resize: none;
 }
 
@@ -223,6 +237,8 @@ img{
   height: 260px;
   background-color: white;
   text-align: center;
+  background-image: asset-url("pc/popup/popup_background.png");
+  background-repeat: repeat-y;
 }
 
 .close_button{
@@ -246,7 +262,9 @@ img{
   width: 450px;
   height: 550px;
   background-color: white;
-  text-align: center;  
+  text-align: center;
+  background-image: asset-url("pc/popup/popup_background.png");
+  background-repeat: repeat-y;
 }
 
 .present_title{
@@ -278,14 +296,11 @@ img{
   width: 21px;
   height: 21px;
   margin: 5px 0;
+  background-image: asset-url("pc/popup/paging_icon.png");
 }
 
 .icon_active{
   background-image: asset-url("pc/popup/paging_icon_active.png");
-}
-
-.icon_none{
-  background-image: asset-url("pc/popup/paging_icon.png");
 }
 
 .popup_footer{
@@ -300,6 +315,8 @@ img{
   width: 450px;
   height: 400px;
   background-color: white;
+  background-image: asset-url("pc/popup/popup_background.png");
+  background-repeat: repeat-y;
 }
 .personal_policy_contents{
   width: 410px;

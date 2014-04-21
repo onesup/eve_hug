@@ -22,13 +22,13 @@ $(document).ready(function(){
 //       modalColor: 'black'
 //     });
 //   });
-  $("#close_finish").click(function(event) {
-    event.preventDefault();
+  $("#close_finish").click(function(e) {
+    e.preventDefault();
     $("#popup_finish").bPopup().close();
     $("#popup_input").bPopup().close();
   });
-  $("#show_present_button").click(function(event) {
-    event.preventDefault();
+  $("#show_present_button").click(function(e) {
+    e.preventDefault();
     $("#show_present").bPopup({
       follow: [false, false], //x, y
       positionStyle: 'fixed',
@@ -36,8 +36,8 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-  $("#button_personal_policy").click(function(event) {
-    event.preventDefault();
+  $("#button_personal_policy").click(function(e) {
+    e.preventDefault();
     $("#personal_policy").bPopup({
       follow: [false, false], //x, y
       positionStyle: 'fixed',
@@ -45,11 +45,9 @@ $(document).ready(function(){
       modalColor: 'black'
     });
   });
-  $(".image_paging").click(function(event) {
-    event.preventDefault();
-    $(".image_paging").removeClass('icon_active icon_none');
-    $(".image_paging").addClass('icon_none');
-    $(this).removeClass("icon_none");
+  $(".image_paging").click(function(e) {
+    e.preventDefault();
+    $(".image_paging").removeClass('icon_active');
     $(this).addClass('icon_active');
   });
   $("#new_comment").bind("ajax:success", function(evt,data,status,xhr){
@@ -114,7 +112,7 @@ function fb_login_spinner(){
   var target = document.getElementById('message_button');
   var spinner = new Spinner(opts).spin(target);
   return spinner;   
-}; 
+};
 function fb_login(){
   var spinner = fb_login_spinner();
   FB.login(function(response) {
