@@ -86,11 +86,16 @@ body{
 	background-color: #ffffff;
 	text-align: center;
 }
-
+.comment_containers{
+	list-style: none;
+	padding-left: 0;
+}
 .comment_container{
 	width: 94%;
 	margin: 0 3%;
-	padding: 2% 0;
+	padding: 0;
+	padding-top: 4%;
+	padding-bottom: 3%;
 	border-bottom: 1px solid #e1e1e1;
 }
 
@@ -101,10 +106,13 @@ body{
 
 .infomation_comment{
 	display: inline-block;
-	width: 80%;
-	font-size: 0.8em;
+	width: 78%;
+	margin-top: 1.5%;
+	margin-left: 2%;
+	font-size: 1em;
+	color: #787878;
 	text-align: left;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 .author_comment{
@@ -113,16 +121,28 @@ body{
 
 .date_comment{
 	display: inline-block;
+	color: #BBBBBB;
 }
 
 .comment{
 	display: block;
 	width: 100%;
+	margin-top: 1.5%;
 }
 
 .paging{
 	text-align: center;
 	padding: 2% 0;
+	color: #bbbbbb;
+	a{
+		color: #bbbbbb;
+		text-align: center;
+		font-size: 1em;
+	}
+	.current{
+		font-size: 1em;
+		color: #828282;
+	}
 }
 
 .gift{
@@ -241,7 +261,7 @@ a:link{
 
 .letter_contents{
  	position: absolute;
-	top: 7.5%;
+	top: 9%;
 	left: 18%;
 	width: 63%;
 	img.letter-image{
