@@ -136,16 +136,18 @@ img{
 }
 
 .infomation_comment{
+  font-size: 12px;
+  margin-top: 5px;
   position: relative;
   float: right;
-  width: 550px;
+  width: 540px;
   height: 60px;
+  margin-left: 10px;
 }
 
 .author_comment{
   float: left;
   height: 20px;
-  margin-left: 20px;
   color: #9b9b9b;
 }
 
@@ -153,7 +155,6 @@ img{
   float: left;
   width: 120px;
   height: 20px;
-  margin-left: 10px;
   color: #c8c8c8;
 }
 
@@ -161,9 +162,9 @@ img{
   clear: both;
   position: absolute;
   top: 25px;
-  margin-left: 20px;
   color: #9b9b9b;
   text-align: left;
+  line-height: 0px;
 }
 
 .paging{
@@ -341,5 +342,10 @@ img{
 }
 .btn_submit{
   width: 140px;
+  
+}
+.author_date{
+  margin-left: 3px;
+  color: #BBBBBB;
   
 }

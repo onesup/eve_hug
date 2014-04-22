@@ -35,7 +35,7 @@
           <%= image_tag comment.user.profile_picture, class: "profile_image" %>
           <div class="infomation_comment">
             <div class="author_comment"><%= comment.user.name %></div>
-            <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
+            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
             <div class="comment"><%= shorten_helper(70,comment.message) %></div>
           </div>
         </li>
