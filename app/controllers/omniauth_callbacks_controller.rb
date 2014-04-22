@@ -5,6 +5,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   
   def facebook
+    Rails.logger.info request.env['omniauth.auth']
     auth = request.env['omniauth.auth']
     Rails.logger.debug "Auth variable: #{auth.inspect}"
     
