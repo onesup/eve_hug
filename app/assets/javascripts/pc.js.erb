@@ -119,8 +119,7 @@ function fb_login(){
         else{
           alert("sorry");
         }
-        $('#results').html(JSON.stringify(json));
-        // Do some other stuff here (call more json, load in more elements, etc)
+                // Do some other stuff here (call more json, load in more elements, etc)
       });
     }
   }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
