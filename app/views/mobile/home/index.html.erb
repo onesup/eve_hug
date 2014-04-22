@@ -1,57 +1,58 @@
 <div class="contain">
-	<div class="header">
-		<%= image_tag("mobile/main/header_logo.png", class: "header_logo") %>
-		<%= image_tag("mobile/main/header_label.png", class: "header_label") %>
-	</div>
-	<div class="title">
-		<%= image_tag("mobile/main/title_label.png", class: "title_label") %>
-		<%= image_tag("mobile/main/title_label2.png", class: "title_label") %>
-		<%= link_to "#", id: "comment_btn" do %>
-			<%= image_tag("mobile/main/title_btn.png", class: "title_label_btn") %>
-		<% end %>
-		<div class="title_share">
-			<%= image_tag("mobile/main/title_share_label.png", class: "title_share_element") %>
-			<%= link_to "#" do %>
-				<%= image_tag("mobile/main/title_share_btn.png", class: "title_share_element title_share_element_right") %>
-			<% end %>
-		</div>
-	</div>
-	<div class="content">
-		<div class="letter_contents">
-			<%= image_tag DailyCard.today_image.card_image_mobile, class: "letter-image"%>
-		</div>
-		<%= image_tag("mobile/main/content_letter_back.png", class: "content_letter_element") %>
-		<%= image_tag("mobile/main/content_letter_front.png", class: "content_letter_element content_letter_front") %>
-		<div class="show">
-			<%= image_tag("mobile/main/content_label.png", class: "content_label") %>
-			<%= link_to "show" do %>
-				<%= image_tag("mobile/main/content_btn.png", class: "content_btn") %>
-			<% end %>
-	</div>
-	<div class="comment_list_container">
-		<ul class="comment_containers">
-			<% @comments.each do |comment|%>
-				<li class="comment_container">
-					<%= image_tag comment.user.profile_picture, class: "profile_image" %>
-		      <div class="infomation_comment">
-		        <div class="author_comment"><%= comment.user.name %></div>
-		        <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
-		        <div class="comment"><%= shorten_helper(70,comment.message) %></div>
-		      </div>
-				</li>
-			<% end %>
-		</ul>
-		<div class="paging">
-			<%= paginate @comments %>
-		</div>
-	</div>
-	<div class="gift">
-		<%= image_tag("mobile/main/gift.png", class: "gift_element") %>
-	</div>
-	<div class="footer">
-		<%= image_tag("mobile/main/personal_info.png", class: "personal_info") %>
-		<%= link_to "personal_info", class: "personal_info_btnBox"  do %>
-			<%= image_tag("mobile/main/personal_info_btn.png", class: "personal_info_btn") %>
-		<% end %>
-	</div>
+  <div class="header">
+    <%= image_tag("mobile/main/header_logo.png", class: "header_logo") %>
+    <%= image_tag("mobile/main/header_label.png", class: "header_label") %>
+  </div>
+  <div class="title">
+    <%= image_tag("mobile/main/title_label.png", class: "title_label") %>
+    <%= image_tag("mobile/main/title_label2.png", class: "title_label") %>
+    <%= link_to "#", id: "comment_btn" do %>
+    <%= image_tag("mobile/main/title_btn.png", class: "title_label_btn") %>
+    <% end %>
+    <div class="title_share">
+      <%= image_tag("mobile/main/title_share_label.png", class: "title_share_element") %>
+      <%= link_to "#", id: "facebook_share_link" do %>
+      <%= image_tag("mobile/main/title_share_btn.png", class: "title_share_element title_share_element_right") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="content">
+    <div class="letter_contents">
+      <%= image_tag DailyCard.today_image.card_image_mobile, class: "letter-image"%>
+    </div>
+    <%= image_tag("mobile/main/content_letter_back.png", class: "content_letter_element") %>
+    <%= image_tag("mobile/main/content_letter_front.png", class: "content_letter_element content_letter_front") %>
+    <div class="show">
+      <%= image_tag("mobile/main/content_label.png", class: "content_label") %>
+      <%= link_to "show" do %>
+      <%= image_tag("mobile/main/content_btn.png", class: "content_btn") %>
+      <% end %>
+    </div>
+    <div class="comment_list_container">
+      <ul class="comment_containers">
+        <% @comments.each do |comment|%>
+        <li class="comment_container">
+          <%= image_tag comment.user.profile_picture, class: "profile_image" %>
+          <div class="infomation_comment">
+            <div class="author_comment"><%= comment.user.name %></div>
+            <div class="date_comment"><%= comment.created_at.strftime("%m.%d %H:%M")%></div>
+            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <div class="paging">
+        <%= paginate @comments %>
+      </div>
+    </div>
+    <div class="gift">
+      <%= image_tag("mobile/main/gift.png", class: "gift_element") %>
+    </div>
+  </div>
+  <div class="footer">
+    <%= image_tag("mobile/main/personal_info.png", class: "personal_info") %>
+    <%= link_to "personal_info", class: "personal_info_btnBox"  do %>
+    <%= image_tag("mobile/main/personal_info_btn.png", class: "personal_info_btn") %>
+    <% end %>
+  </div>
 </div>

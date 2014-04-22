@@ -9,6 +9,7 @@ body{
 .content{
 	width: 100%;
 	position: relative;
+  clear: both;
 }
 .header{
 	width: 100%;
@@ -265,7 +266,7 @@ a:link{
 
 .letter_contents{
  	position: absolute;
-	top: 8%;
+	top: 4%;
 	left: 18%;
 	width: 63%;
 	img.letter-image{
