@@ -59,25 +59,25 @@
 
 
   <!-- Popup -->
-    <div id="popup_finish">
-      <%= link_to "#", class: "close close_button" do%>
-        <%= image_tag("pc/popup/close.png") %>
-      <% end %>
-      <%= image_tag("pc/popup/thank.png", class: "thanks") %>
-      <br/>
-      <%= link_to "#", id: "close_finish", class: "close" do %>
-        <%= image_tag("pc/popup/finish_button.png") %>
-      <% end %>
-    </div>
-   <%= render "popup_input"%>
+  <div id="popup_finish">
+    <%= link_to "#", class: "close close_button" do%>
+      <%= image_tag("pc/popup/close.png") %>
+    <% end %>
+    <%= image_tag("pc/popup/thank.png", class: "thanks") %>
+    <br/>
+    <%= link_to "#", id: "close_finish", class: "close" do %>
+      <%= image_tag("pc/popup/finish_button.png") %>
+    <% end %>
+  </div>
+  <%= render "popup_input"%>
   <div id="show_present">
     <%= link_to "#", class: "close close_button" do%>
       <%= image_tag("pc/popup/close.png") %>
     <% end %>
     <%= image_tag("pc/popup/present_title.png", class: "present_title") %>
-    <%= image_tag("", class: "image_bedcloths") %>
+    <%= image_tag("pc/popup/bedcloths_sample.png", class: "image_bedcloths") %>
     <div class="explain_bedcloths">
-      <!-- contents -->
+      explain about bedcloths
     </div>
     <div class="popup_footer">
       <div class="image_paging_list">

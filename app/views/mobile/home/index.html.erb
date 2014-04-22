@@ -28,7 +28,7 @@
 				<%= image_tag("mobile/main/content_btn.png", class: "content_btn") %>
 			<% end %>
 	</div>
-	<div class="comment">
+	<div class="comment_list_container">
 		<% @comments.each do |comment|%>
 	    <div class="comment_container">
 	      <div class="profile_image">
@@ -41,10 +41,10 @@
 	      </div>
 	    </div>
 		<% end %>
+		<div class="paging">
+			<%= paginate @comments %>
+		</div>
 	</div>
-  <div class="paging">
-    <%= paginate @comments %>
-  </div>
 	<div class="gift">
 		<%= image_tag("mobile/main/gift.png", class: "gift_element") %>
 	</div>

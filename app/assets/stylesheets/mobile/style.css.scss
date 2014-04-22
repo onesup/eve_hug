@@ -22,7 +22,7 @@ body{
 
 .header_label{
 	width: 50%;
-	float:right;
+	float: right;
 }
 
 
@@ -79,11 +79,50 @@ body{
 	text-align: center;
 }
 
-.comment{
+.comment_list_container{
 	width: 85%;
 	margin: 5% 0 5% 7.5%;
-	background-image: asset-url('mobile/main/comment_background.png');
+	// background-image: asset-url('mobile/main/comment_background.png');
+	background-color: #ffffff;
 	text-align: center;
+}
+
+.comment_container{
+	width: 94%;
+	margin: 0 3%;
+	padding: 2% 0;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.profile_image{
+	display: inline-block;
+	width: 18%;
+}
+
+.infomation_comment{
+	display: inline-block;
+	width: 80%;
+	font-size: 0.8em;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.author_comment{
+	display: inline-block;
+}
+
+.date_comment{
+	display: inline-block;
+}
+
+.comment{
+	display: block;
+	width: 100%;
+}
+
+.paging{
+	text-align: center;
+	padding: 2% 0;
 }
 
 .gift{
@@ -201,9 +240,10 @@ a:link{
 }
 
 .letter_contents{
-  position: absolute;
-  top: 10%;
-  left: 18%;
+ 	position: absolute;
+	top: 7.5%;
+	left: 18%;
+	width: 63%;
 	img.letter-image{
 	  width: 100%;
 	  height: 18%;
