@@ -155,7 +155,7 @@ body{
 }
 
 .personal_info{
-	width: 100%;
+	width: 113%;
 }
 
 
@@ -177,12 +177,15 @@ body{
 .popup_header{
 	width: 100%;
 }
-
+.top{
+	background: #fff;
+	text-align: right;
+}
 .popup_escape{
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 12%;
+	width: 8%;
+	padding: 1%;
+	padding-right: 3%;
+	margin: 0 auto;
 }
 
 .popup_thanks_label{
@@ -243,6 +246,10 @@ a:link{
 }
 
 .popup_message_textarea{
+	border: 0;
+	padding: 4%;
+	font-size: 1.2em;
+	color: #555;
 	margin-top: 5%;
 	width: 80%;
 	height: 40%;
@@ -261,7 +268,7 @@ a:link{
 
 .letter_contents{
  	position: absolute;
-	top: 9%;
+	top: 8%;
 	left: 18%;
 	width: 63%;
 	img.letter-image{
