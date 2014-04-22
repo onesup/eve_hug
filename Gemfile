@@ -33,9 +33,9 @@ gem 'koala'
 gem 'thor', '0.19.0'
 gem 'carrierwave' #image uploader
 # gem 'rack-facebook-signed-request', :git => 'git://github.com/cmer/rack-facebook-signed-request.git'
+gem 'pry'
 group :development do
   gem 'guard-rails'
-  gem 'pry'
   gem 'quiet_assets'
   gem 'capistrano'
   gem 'capistrano-rbenv', '2.0.1'
@@ -51,4 +51,3 @@ group :test do
   gem "database_cleaner", '~> 1.2.0'
   # gem "email_spec"
 end
-
