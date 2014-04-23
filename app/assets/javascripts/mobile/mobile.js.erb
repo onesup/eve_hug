@@ -112,7 +112,6 @@ function share() {
 }
 function fb_share(){
   $.getJSON('/user_signed_in').done(function(json) {
-		alert(json.result);
 		if(json.result == true){
 	    var user_id = json.user_id;
       $.ajax({
@@ -130,7 +129,18 @@ function fb_share(){
 		}else{
 	  	FB.login(function(response) {
 	    	if(response.authResponse) {
-					share();
+		      $.ajax({
+		        type: "POST",
+		        url: "/viral_actions.json",
+		        data: {
+		          'viral_action[platform]': "Facebook",
+		          'viral_action[device]': "mobile",
+		          'viral_action[user_id]': user_id
+		      	},
+						success: function (data) {
+							share();
+						}
+		      });
 				}else{
 					alert("페이스북 로그인이 필요합니다.");
 				}
