@@ -115,7 +115,7 @@ function fb_login(){
       // out the auth code from the signed request in the fbsr_XXX cookie
       spinner.stop();
 			d = response.authResponse;
-			var url = '/users/auth/facebook/callback?' + $.param({signed_request: response.authResponse.signedRequest});
+			var url = '/users/auth/facebook/callback.json?' + $.param({signed_request: response.authResponse.signedRequest});
 			$.ajax({
 				type: "GET",				 
 				url: url,
