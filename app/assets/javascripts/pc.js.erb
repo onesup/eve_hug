@@ -117,11 +117,12 @@ function fb_login(){
       spinner.stop();
 			d = response.authResponse;
 			e = response;
-			var url = '/auth/facebook/callback'; // + $.param({
- // 				signed_request: response.authResponse.signedRequest,
- // 				uid: response.authResponse.userID,
- // 				token: response.authResponse.accessToken
-				// uid: response.authResponse.extension.token,
+			var url = '/auth/facebook/callback'; 
+			// + $.param({
+			// signed_request: response.authResponse.signedRequest,
+			// uid: response.authResponse.userID,
+			// token: response.authResponse.accessToken
+			// uid: response.authResponse.extension.token,
 			// });
 			$.ajax({
 				type: "GET",				 
