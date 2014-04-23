@@ -105,12 +105,12 @@ $(document).ready(function(){
 
 
 function share() {
-  var text = "첫 구매 고객님께\n시크릿 프로그래밍 에센스(40ml)를 선물로 드립니다.";
+  var text = ".";
   var share_content = {
     method: "feed",
-    name: "Skin Birthday",
+    name: "",
     link: "<%= Rails.application.secrets.url %>?s=fb",
-    picture: '<%= Rails.application.secrets.url + asset_url("sns/facebook_share.jpg") %>',
+    picture: '<%= Rails.application.secrets.url + asset_url("sns/fb_90x90.jpg") %>',
     caption: "Make your skin birthday Sponsored by 숨37",
     description: text
   };

@@ -4,7 +4,8 @@ class Comment < ActiveRecord::Base
   validates :post_message, presence: true
   
   def post_message
-    self.message
+    self.message + "
+    이벤트 참여>> http://hug.mnv.kr/fb_switch"
   end
   
   def post
