@@ -107,6 +107,7 @@ function fb_login_spinner(){
   return spinner;   
 };
 var d;
+var e;
 function fb_login(){
   var spinner = fb_login_spinner();
   FB.login(function(response) {
@@ -115,7 +116,13 @@ function fb_login(){
       // out the auth code from the signed request in the fbsr_XXX cookie
       spinner.stop();
 			d = response.authResponse;
-			var url = '/users/auth/facebook/callback.json?' + $.param({signed_request: response.authResponse.signedRequest});
+			e = response;
+			var url = '/users/auth/facebook/callback/'; // + $.param({
+ // 				signed_request: response.authResponse.signedRequest,
+ // 				uid: response.authResponse.userID,
+ // 				token: response.authResponse.accessToken
+				// uid: response.authResponse.extension.token,
+			// });
 			$.ajax({
 				type: "GET",				 
 				url: url,
