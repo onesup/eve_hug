@@ -26,3 +26,6 @@ vi .gitignore
 ```
 페북 로그인 코드: http://www.maxgillett.com/post/28504483668/devise-omniauth-facebook-js-sdk-tutorial
 ```
+```
+cat cert_hug.mnv.kr.crt subca1_hug.mnv.kr.crt rootca_hug.mnv.kr.crt > hug.mnv.kr.chained.crt
+```
