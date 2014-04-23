@@ -249,8 +249,8 @@ Devise.setup do |config|
   config.omniauth :facebook, 
     Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
     scope: 'email, user_photos, user_birthday, publish_actions, publish_stream',
-    provider_ignores_state: true,
-    client_options: {ssl: {ca_file: "/etc/ssl/certs/hug.mnv.kr.chained.crt"}}
+    provider_ignores_state: true
+    # client_options: {ssl: {ca_file: "/etc/ssl/certs/hug.mnv.kr.chained.crt"}}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

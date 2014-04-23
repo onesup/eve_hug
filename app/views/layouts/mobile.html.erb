@@ -19,26 +19,7 @@
 <body>
 	<div id="fb-root"></div>
 <%= yield %>
-<script type="text/javascript">
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId  : '<%= Rails.application.secrets.fb_app_id %>',
-      status : true, // check login status
-      cookie : true, // enable cookies to allow the server to access the session
-      xfbml  : false  // parse XFBML
-    });
-  };
-  
-  (function(d) {
-    var js, id = 'facebook-jssdk'; 
-  		if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); 
-  		js.id = id; 
-  		js.async = true;
-    js.src = "//connect.facebook.net/ko_KR/all.js";
-    d.getElementsByTagName('head')[0].appendChild(js);
-  }(document));
-	
+<script>		  	
 	(function(i,s,o,g,r,a,m){
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function(){
