@@ -15,17 +15,25 @@ $(document).ready(function(){
 
   $("#facebook_share_link").click(function(e){
     e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "/viral_actions.json",
-      data: {
-        'viral_action[platform]': "Facebook",
-        'viral_action[device]': "pc"
-      },
-      success: function (data) {
+    $.getJSON('/user_signed_in').done(function(json) {
+      if(json.result == true){
+        var user_id = json.user_id;
+        $.ajax({
+          type: "POST",
+          url: "/viral_actions.json",
+          data: {
+            'viral_action[platform]': "Facebook",
+            'viral_action[device]': "pc",
+            'viral_action[user_id]': user_id
+          },
+          success: function (data) {
+          }
+        });
+        share();
+      }else{
+        fb_login();
       }
     });
-    share();
   });
   $("#close_finish").click(function(e) {
     e.preventDefault();
@@ -117,11 +125,12 @@ function fb_login(){
       spinner.stop();
 			d = response.authResponse;
 			e = response;
-			var url = '/auth/facebook/callback'; // + $.param({
- // 				signed_request: response.authResponse.signedRequest,
- // 				uid: response.authResponse.userID,
- // 				token: response.authResponse.accessToken
-				// uid: response.authResponse.extension.token,
+			var url = '/auth/facebook/callback'; 
+			// + $.param({
+			// signed_request: response.authResponse.signedRequest,
+			// uid: response.authResponse.userID,
+			// token: response.authResponse.accessToken
+			// uid: response.authResponse.extension.token,
 			// });
 			$.ajax({
 				type: "GET",				 
