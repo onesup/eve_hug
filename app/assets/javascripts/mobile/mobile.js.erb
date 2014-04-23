@@ -34,17 +34,7 @@ $(document).ready(function(){
 			});
 	    $("#facebook_share_link").click(function(e){
 	      e.preventDefault();
-	      $.ajax({
-	        type: "POST",
-	        url: "/viral_actions.json",
-	        data: {
-	          'viral_action[platform]': "Facebook",
-	          'viral_action[device]': "mobile"
-	        },
-	        success: function (data) {
-	        }
-	      });
-	      share();
+		    fb_share();
 	    });
 			/*
 			$('#popup_list_btn_id_4').click(function(){
@@ -120,7 +110,35 @@ function share() {
     }
   });
 }
-
+function fb_share(){
+  $.getJSON('/user_signed_in').done(function(json) {
+	  FB.login(function(response) {
+	    if(response.authResponse) {
+				$.getJSON('/auth/facebook/callback', function(json) {
+			    if(json.success == true){
+			      var user_id = json.user_id;
+			      $.ajax({
+			        type: "POST",
+			        url: "/viral_actions.json",
+			        data: {
+			          'viral_action[platform]': "Facebook",
+			          'viral_action[device]': "pc",
+			          'viral_action[user_id]': user_id
+			        },
+			        success: function (data) {
+			        }
+			      });
+			      share();
+			    }else{
+			      alert("sorry");
+			    }
+				});
+			}
+		},{
+			scope: 'email, user_photos, user_birthday, publish_actions, publish_stream'
+		});
+  });
+}
 function fb_login(){
   var spinner = fb_login_spinner();
   FB.login(function(response) {
