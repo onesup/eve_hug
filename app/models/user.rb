@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :access_logs
   has_many :comments
   has_many :authentications
+  has_many :viral_actions
   # validates :agree, acceptance: true
   # validates :agree2, acceptance: true
   # validates :name, presence: true
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
       self.email = auth.extra.raw_info.email
       self.profile_picture = auth.info.image
       self.gender = auth.extra.raw_info.gender
-      self.birthday = DateTime.parse(auth.extra.raw_info.birthday)
+      self.birthday = Date.strptime(auth.extra.raw_info.birthday,"%m/%d/%Y")
       self.facebook_url = auth.extra.raw_info.link
       
       authentications.build(
