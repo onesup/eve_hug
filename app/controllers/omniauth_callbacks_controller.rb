@@ -5,12 +5,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   
   def facebook
-    Rails.logger.info request.env['omniauth.auth']
     auth = request.env['omniauth.auth']
-    Rails.logger.debug "Auth variable: #{auth.inspect}"
-    
+    Rails.logger.debug "@@auth: " + auth.to_s
     # Try to find authentication first
-    authentication = Authentication.find_by_provider_and_uid(auth.provider, auth.uid)    
+    authentication = Authentication.find_by_provider_and_uid("facebook", auth.uid)    
     unless current_user 
     # Request a new 60 day token using the current 2 hour token obtained from fb
       auth.merge!(extend_fb_token(auth.credentials.token))
@@ -21,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         saved_status = user.save(:validate => false)
       end
     # Add the new token and expiration date to the user's session
-
+    
       create_or_refresh_fb_session(auth)
       if saved_status.nil? || saved_status
         user = authentication ? authentication.user : user
@@ -31,8 +29,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     render json: { 
       success: (current_user ? true : false), 
-      current_user: current_user.as_json(only: [:email]) }
-    end
+      current_user: current_user.as_json(only: [:email]) 
+    }
+  end
   
   def extend_fb_token(token)
     # can be called once a day to extend fb access token

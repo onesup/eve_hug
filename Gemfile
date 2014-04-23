@@ -14,12 +14,11 @@ gem 'execjs'
 gem 'mysql2'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'simple_form'
-gem 'devise'
 gem 'omniauth-facebook'
+gem 'devise'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'rest-client'
-gem 'gabba' #serverside google analytics gem
 gem 'json'
 gem 'nokogiri'
 gem 'nori' #xml parser

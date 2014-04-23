@@ -100,7 +100,6 @@ GEM
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
-    gabba (1.0.1)
     guard (2.6.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -305,7 +304,6 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   font-awesome-rails
-  gabba
   guard-rails
   guard-rspec
   jbuilder (~> 2.0)

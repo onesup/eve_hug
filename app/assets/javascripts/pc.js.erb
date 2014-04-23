@@ -109,19 +109,21 @@ function fb_login_spinner(){
 function fb_login(){
   var spinner = fb_login_spinner();
   FB.login(function(response) {
-		console.log(response);
     if (response.authResponse) {
       // since we have cookies enabled, this request will allow omniauth to parse
       // out the auth code from the signed request in the fbsr_XXX cookie
       spinner.stop();
-      $.getJSON('/users/auth/facebook/callback', function(json) {
-        if(json.success === true)
-        message_input_popup();
-        else{
-          alert("sorry");
-        }
-                // Do some other stuff here (call more json, load in more elements, etc)
-      });
+			$.ajax({
+				type: "GET",
+				url: "/users/auth/facebook/callback",
+				success: function (data) {
+					if(json.success === true)
+						message_input_popup();
+					else{
+						alert("sorry");
+					}
+				}
+			});
     }
   }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
 };
