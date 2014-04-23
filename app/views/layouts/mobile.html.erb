@@ -17,6 +17,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="fb-root"></div>
 <%= yield %>
 <script type="text/javascript">
   window.fbAsyncInit = function() {
@@ -24,17 +25,17 @@
       appId  : '<%= Rails.application.secrets.fb_app_id %>',
       status : true, // check login status
       cookie : true, // enable cookies to allow the server to access the session
-      xfbml  : true  // parse XFBML
+      xfbml  : false  // parse XFBML
     });
   };
-
+  
   (function(d) {
     var js, id = 'facebook-jssdk'; 
-		if (d.getElementById(id)) {return;}
+  		if (d.getElementById(id)) {return;}
     js = d.createElement('script'); 
-		js.id = id; 
-		js.async = true;
-    js.src = "//connect.facebook.net/ko_KRs/all.js";
+  		js.id = id; 
+  		js.async = true;
+    js.src = "//connect.facebook.net/ko_KR/all.js";
     d.getElementsByTagName('head')[0].appendChild(js);
   }(document));
 	

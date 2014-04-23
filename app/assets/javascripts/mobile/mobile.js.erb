@@ -1,95 +1,86 @@
 $(document).ready(function(){
+	// $.ajaxSetup({ cache: true });
+	// $.getScript('//connect.facebook.net/ko_KR/all.js', function(){
+			//     FB.init({
+			//       appId  : '<%= Rails.application.secrets.fb_app_id %>',
+			// // nativeInterface: CDV.FB,
+			// // useCachedDialogs: false,
+			//       status : true, // check login status
+			//       cookie : true, // enable cookies to allow the server to access the session
+			//       xfbml  : true  // parse XFBML
+			//     });
 	
-	$("#comment_btn").click(function(e){
-		e.preventDefault();
-	  $.getJSON('/user_signed_in').done(function(json) {
-	    if(json.result == true){
-				message_input_redirect();
-	    }else{
-	    	fb_login();
-	    }
-	  });		
-	});
-	$('#popup_list_btnBox').ready(function(){
-		$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
-
-		$('#popup_list_btn_id_1').click(function(){
-			popup_show_disable_all();
+		$("#comment_btn").click(function(e){
+			e.preventDefault();
+		  $.getJSON('/user_signed_in').done(function(json) {
+		    if(json.result == true){
+					message_input_redirect();
+		    }else{
+		    	fb_login();
+		    }
+		  });		
+		});
+		$('#popup_list_btnBox').ready(function(){
 			$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
-			$('.popup_image_1').css('display', 'block');
-		});
 
-		$('#popup_list_btn_id_2').click(function(){
-			popup_show_disable_all();
-			$('#popup_list_btn_id_2').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
-			$('.popup_image_2').css('display', 'block');
-		});
+			$('#popup_list_btn_id_1').click(function(){
+				popup_show_disable_all();
+				$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+				$('.popup_image_1').css('display', 'block');
+			});
 
-		$('#popup_list_btn_id_3').click(function(){
-			popup_show_disable_all();
-			$('#popup_list_btn_id_3').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
-			$('.popup_image_3').css('display', 'block');
-		});
-    $("#facebook_share_link").click(function(e){
-      e.preventDefault();
-      $.ajax({
-        type: "POST",
-        url: "/viral_actions.json",
-        data: {
-          'viral_action[platform]': "Facebook",
-          'viral_action[device]': "mobile"
-        },
-        success: function (data) {
-        }
-      });
-      share();
-    });
-		/*
-		$('#popup_list_btn_id_4').click(function(){
-			popup_show_disable_all();
-			$('#popup_list_btn_id_4').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
-		});
+			$('#popup_list_btn_id_2').click(function(){
+				popup_show_disable_all();
+				$('#popup_list_btn_id_2').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+				$('.popup_image_2').css('display', 'block');
+			});
 
-		$('#popup_list_btn_id_5').click(function(){
-			popup_show_disable_all();
-			$('#popup_list_btn_id_5').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+			$('#popup_list_btn_id_3').click(function(){
+				popup_show_disable_all();
+				$('#popup_list_btn_id_3').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+				$('.popup_image_3').css('display', 'block');
+			});
+	    $("#facebook_share_link").click(function(e){
+	      e.preventDefault();
+	      $.ajax({
+	        type: "POST",
+	        url: "/viral_actions.json",
+	        data: {
+	          'viral_action[platform]': "Facebook",
+	          'viral_action[device]': "mobile"
+	        },
+	        success: function (data) {
+	        }
+	      });
+	      share();
+	    });
+			/*
+			$('#popup_list_btn_id_4').click(function(){
+				popup_show_disable_all();
+				$('#popup_list_btn_id_4').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+			});
+
+			$('#popup_list_btn_id_5').click(function(){
+				popup_show_disable_all();
+				$('#popup_list_btn_id_5').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
+			});
+			*/
+			function popup_show_disable_all(){
+				$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
+				$('#popup_list_btn_id_2').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
+				$('#popup_list_btn_id_3').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
+				$('.popup_image_1').css('display', 'none');
+				$('.popup_image_2').css('display', 'none');
+				$('.popup_image_3').css('display', 'none');
+			/*	$('#popup_list_btn_id_4').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
+				$('#popup_list_btn_id_5').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
+			*/}
 		});
-		*/
-		function popup_show_disable_all(){
-			$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
-			$('#popup_list_btn_id_2').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
-			$('#popup_list_btn_id_3').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
-			$('.popup_image_1').css('display', 'none');
-			$('.popup_image_2').css('display', 'none');
-			$('.popup_image_3').css('display', 'none');
-		/*	$('#popup_list_btn_id_4').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
-			$('#popup_list_btn_id_5').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_none.png') %>)");
-		*/}
-	});
+	// });
 });
 
 function message_input_redirect(){
 	window.location.assign("/mobile/comments/new")
-};
-
-function fb_login(){
-  var spinner = fb_login_spinner();
-  FB.login(function(response) {
-    if (response.authResponse) {
-      // since we have cookies enabled, this request will allow omniauth to parse
-      // out the auth code from the signed request in the fbsr_XXX cookie
-      spinner.stop();
-      $.getJSON('/auth/facebook/callback', function(json) {
-        if(json.success === true)
-          message_input_redirect();
-        else{
-          alert("sorry");
-        }
-        $('#results').html(JSON.stringify(json));
-        // Do some other stuff here (call more json, load in more elements, etc)
-      });
-    }
-  }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
 };
 
 function fb_login_spinner(){
@@ -137,3 +128,24 @@ function share() {
     }
   });
 }
+
+function fb_login(){
+  var spinner = fb_login_spinner();
+  FB.login(function(response) {
+    if (response.authResponse) {
+      // since we have cookies enabled, this request will allow omniauth to parse
+      // out the auth code from the signed request in the fbsr_XXX cookie
+      spinner.stop();
+      $.getJSON('/auth/facebook/callback', function(json) {
+        if(json.success === true)
+          message_input_redirect();
+        else{
+          alert("sorry");
+        }
+      });
+    }
+  }, { 
+		scope: 'email, user_photos, user_birthday, publish_actions, publish_stream', 
+		display: 'dialog' 
+	}); // These are the permissions you are requesting
+};
