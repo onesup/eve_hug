@@ -13,8 +13,8 @@ img{
 
 .container{
   width: 810px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
   background-image: asset-url("pc/bg-image.png");
@@ -52,7 +52,7 @@ img{
 }
 
 .share{
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .share_button{
@@ -91,7 +91,7 @@ img{
   position: relative;
   width: 480px;
   height: 50px;
-  margin: 50px auto;
+  margin: 10px auto 30px;
 }
 
 .message{
