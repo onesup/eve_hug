@@ -1,5 +1,12 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+
+FACEBOOK_SETUP_PROC = lambda do |env|
+  request = Rack::Request.new(env)
+  mobile_device = request.user_agent =~ /Mobile|webOS/i
+  request.env['omniauth.strategy'].options[:display] = mobile_device ? "touch" : "page"
+end
+
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -234,7 +241,8 @@ Devise.setup do |config|
   config.omniauth :facebook, 
     Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_app_secret,
     scope: 'email, user_photos, user_birthday, publish_actions, publish_stream',
-    strategy_class: OmniAuth::Strategies::Facebook, provider_ignores_state: true
+    strategy_class: OmniAuth::Strategies::Facebook, provider_ignores_state: true,
+    setup: FACEBOOK_SETUP_PROC
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
