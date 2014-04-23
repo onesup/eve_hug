@@ -117,7 +117,7 @@ function fb_login(){
       spinner.stop();
 			d = response.authResponse;
 			e = response;
-			var url = '/users/auth/facebook/callback/'; // + $.param({
+			var url = '/auth/facebook/callback'; // + $.param({
  // 				signed_request: response.authResponse.signedRequest,
  // 				uid: response.authResponse.userID,
  // 				token: response.authResponse.accessToken
