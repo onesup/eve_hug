@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class CallbacksController < Devise::OmniauthCallbacksController
   
   def failure
     redirect_to root_path

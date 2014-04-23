@@ -39,6 +39,6 @@ Rails.application.routes.draw do
   get 'fb_switch' => 'fb_switch#index'
   get 'user_signed_in' => 'user_sessions#user_signed_in'
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  devise_for :users, :controllers => {:omniauth_callbacks => "callbacks"}
   root 'web_switch#index'
 end

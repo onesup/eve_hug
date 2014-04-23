@@ -117,7 +117,7 @@ function fb_login(){
 				type: "GET",
 				url: "/users/auth/facebook/callback",
 				success: function (data) {
-					if(json.success === true)
+					if(data.success == true)
 						message_input_popup();
 					else{
 						alert("sorry");
