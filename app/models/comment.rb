@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   scope :published, -> { where(status: "show") } 
-  validates :post_message, presence: true
+  validates :message, presence: true
   
   def post_message
     self.message + "

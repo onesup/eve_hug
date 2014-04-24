@@ -41,7 +41,7 @@
               <th class="device">디바이스</th>
               <th class="name">참여자</th>
               <th>전화번호</th>
-              <th>접근건수</th>
+              <th>메세지작성</th>
 							<th>참여일시</th>
             </tr>
           </thead>
@@ -55,13 +55,14 @@
                   <%= user.access_logs.first.device unless user.access_logs.empty? %>
                 </td>
                 <td>
-                  <%= user.name %>
+                  <p><%= image_tag user.profile_picture%></p>
+                  <p><%= link_to user.name, user.facebook_url, target:"_blank" %></p>
                 </td>
                 <td>
                   <%= user.phone unless user.phone.nil? %>
                 </td>
                 <td>
-                  <%= user.access_logs_count unless user.access_logs.empty? %>
+                  <%= user.comments_count unless user.comments_count.nil? %>
                 </td>
                 <td class="updated_at">
                   <p><%= user.updated_at.strftime("%m.%d %H:%M") %></p>

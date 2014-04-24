@@ -125,35 +125,30 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th class="device">디바이스</th>
-            <th class="name">플랫폼</th>
             <th>참여자</th>
-            <th>참여자Email</th>
+            <th>이메일</th>
 						<th>참여일시</th>
+            <th>참여횟수</th>
           </tr>
         </thead>
         <tbody>
-          <% @viral_actions.each do |viral_action| %>
+          <% @users.each do |user| %>
             <tr class="">
               <td>
-                <%= viral_action.id %>
+                <%= user.id %>
+              </td>
+              <td><p><%= image_tag user.profile_picture %></p>
+                <p><%= link_to user.name, user.facebook_url, target:"_blank"%></p>
               </td>
               <td>
-                <%= viral_action.device %>
-              </td>
-              <td>
-                <%= viral_action.platform %>
-              </td>
-              <td>
-                <%= viral_action.user.name %>
-              </td>
-              <td>
-                <%= viral_action.user.email %>
+                <%= user.email %>
               </td>
               <td class="updated_at">
-                <p><%= viral_action.created_at.strftime("%m.%d %H:%M") %></p>
+                <p><%= user.created_at.strftime("%m.%d %H:%M") %></p>
               </td>
-							
+							<td>
+              <p><%= user.viral_actions_count %></p>
+              </td>
             </tr>
           <% end %>
         </tbody>

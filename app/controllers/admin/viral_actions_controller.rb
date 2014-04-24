@@ -3,6 +3,7 @@ class Admin::ViralActionsController < ApplicationController
   before_action :authenticate_user!
   def index
     @viral_actions = ViralAction.order("id desc").page(params[:page]).per(200)
+    @users = User.where("viral_actions_count > 0").order("id desc").page(params[:page]).per(200)
     @viral_action_counts_daily = ViralAction.select(
       "date(viral_actions.created_at) as created_date,
       sum(case when viral_actions.device = 'pc' then 1 else 0 end) as pc_count,
