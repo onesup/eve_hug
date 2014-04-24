@@ -224,6 +224,25 @@ th.mms_body{
   width:200px;
 }
 
+/*.comment_id{
+  width: 80px;
+}
+.comment_user{
+  width: 120px;
+}
+.comment_message{
+  width: 500px;
+}
+.comment_status{
+  width: 120px;
+}
+.comment_created_at{
+  width: 120px;
+}
+.comment_action{
+  width: 120px;
+}*/
+
 .total_user_header{
   margin-top: 20px;
   font-size: 16px;
@@ -238,4 +257,8 @@ th.mms_body{
 }
 .traffic-logs th{
 	font-size: 11px;
+}
+tr.deleted td{
+  color: red;
+  text-decoration: line-through;
 }

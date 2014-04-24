@@ -3,7 +3,7 @@ class Admin::CommentsController < ApplicationController
   before_action :authenticate_user!
    
   def index
-    @comments = Comment.all
+    @comments = Comment.all.order('id desc')
   end
   
   def destroy

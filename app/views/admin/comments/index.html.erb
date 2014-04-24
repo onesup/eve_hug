@@ -8,28 +8,40 @@
       <div class="span11">
         <%#= paginate @users %>
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="data-table">
+          <colgroup>
+          <col width="80px">
+          <col width="80px">
+          <col width="80px">
+          <col width="80px">
+          <col width="80px">
+          <col width="80px">
+          </colgroup>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>참여자</th>
-              <th>댓글</th>
-              <th>상태</th>
-              <th>참여일시</th>
-              <th>삭제</th>
+              <th class="comment_id">ID</th>
+              <th class="comment_user">참여자</th>
+              <th class="comment_message">댓글</th>
+              <th class="comment_status">상태</th>
+              <th class="comment_created_at">참여일시</th>
+              <th class="comment_action">삭제</th>
             </tr>
           </thead>
           <tbody>
             <% @comments.each do |comment| %>
-              <tr class="">
+              <%if comment.status=="deleted" %>
+              <tr class="deleted">
+                <%else%>
+                <tr class="">
+                  <%end%>
                 <td>
                   <%= comment.id %>
                 </td>
                 <td>
                   <%= comment.user.name %>
                 </td>
-                <td>
+                <td><div style="width:200px;"><p>
                   <%= comment.message %>
-                </td>
+                </pagex></div></td>
                 <td>
                   <%= comment.status %>
                 </td>
