@@ -5,39 +5,21 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Skin Birthday">
+	<meta name="description" content="이브자리">
 	<meta name = "viewport" content = "width=device-width, user-scalable=no" />
 	<meta property="og:url" content="https://<%= Rails.application.secrets.url%>" />
 	<meta property="og:image" content="<%= asset_url("sns/facebook_share.jpg") %>" />
-	<meta property="og:title" content="Skin Birthday" />
-	<meta property="og:description" content="사연을 남겨주시는 분께 이브자리 침구를 부모님께 보내드립니다."/>
+	<meta property="og:title" content="이브자리" />
+	<meta property="og:description" content="이브자리 가족의 달 캠페인."/>
 	<title>eve_hug</title>
 	<%= stylesheet_link_tag "mobile", media: "all"%>
 	<%= javascript_include_tag "mobile"%>
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="fb-root"></div>
 <%= yield %>
-<script type="text/javascript">
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId  : '<%= Rails.application.secrets.fb_app_id %>',
-      status : true, // check login status
-      cookie : true, // enable cookies to allow the server to access the session
-      xfbml  : true  // parse XFBML
-    });
-  };
-
-  (function(d) {
-    var js, id = 'facebook-jssdk'; 
-		if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); 
-		js.id = id; 
-		js.async = true;
-    js.src = "//connect.facebook.net/ko_KRs/all.js";
-    d.getElementsByTagName('head')[0].appendChild(js);
-  }(document));
-	
+<script>		  	
 	(function(i,s,o,g,r,a,m){
 		i['GoogleAnalyticsObject'] = r;
 		i[r] = i[r] || function(){

@@ -15,25 +15,7 @@ $(document).ready(function(){
 
   $("#facebook_share_link").click(function(e){
     e.preventDefault();
-    $.getJSON('/user_signed_in').done(function(json) {
-      if(json.result == true){
-        var user_id = json.user_id;
-        $.ajax({
-          type: "POST",
-          url: "/viral_actions.json",
-          data: {
-            'viral_action[platform]': "Facebook",
-            'viral_action[device]': "pc",
-            'viral_action[user_id]': user_id
-          },
-          success: function (data) {
-          }
-        });
-        share();
-      }else{
-        fb_login();
-      }
-    });
+    fb_share();
   });
   $("#close_finish").click(function(e) {
     e.preventDefault();
@@ -55,7 +37,8 @@ $(document).ready(function(){
       follow: [false, false], //x, y
       positionStyle: 'fixed',
       closeClass: 'close',
-      modalColor: 'black'
+      modalColor: 'black',
+			position: ['auto', 1500], //x, y
     });
   });
   $(".image_paging").click(function(e) {
@@ -70,7 +53,8 @@ $(document).ready(function(){
         follow: [false, false], //x, y
         positionStyle: 'fixed',
         closeClass: 'close',
-        modalColor: 'black'
+        modalColor: 'black',
+				position: ['auto', 150], //x, y
       });
     }else {
     }
@@ -88,7 +72,8 @@ function message_input_popup(){
     follow: [false, false], //x, y
     positionStyle: 'fixed',
     closeClass: 'close',
-    modalColor: 'black'
+    modalColor: 'black',
+		position: ['auto', 160] //x, y
   });
 };
 function fb_login_spinner(){
@@ -114,37 +99,27 @@ function fb_login_spinner(){
   var spinner = new Spinner(opts).spin(target);
   return spinner;   
 };
-var d;
-var e;
 function fb_login(){
   var spinner = fb_login_spinner();
   FB.login(function(response) {
     if (response.authResponse) {
-      // since we have cookies enabled, this request will allow omniauth to parse
-      // out the auth code from the signed request in the fbsr_XXX cookie
-      spinner.stop();
-			d = response.authResponse;
-			e = response;
 			var url = '/auth/facebook/callback'; 
-			// + $.param({
-			// signed_request: response.authResponse.signedRequest,
-			// uid: response.authResponse.userID,
-			// token: response.authResponse.accessToken
-			// uid: response.authResponse.extension.token,
-			// });
 			$.ajax({
 				type: "GET",				 
 				url: url,
 				success: function (data) {
+					spinner.stop();
 					if(data.success == true)
 						message_input_popup();
 					else{
-						alert("sorry");
+						alert("페이스북 로그인이 필요합니다.");
 					}
 				}
 			});
+    }else{
+    	alert("페이스북 로그인이 필요합니다.");
     }
-  }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' }); // These are the permissions you are requesting
+  }, { scope: 'email, user_photos, user_birthday, publish_actions, publish_stream' });
 };
 
 function validation(errors){
@@ -156,12 +131,12 @@ function validation(errors){
 }
 
 function share() {
-  var text = "첫 구매 고객님에게\n시크릿 프로그래밍 에센스(40ml)를 선물로 드립니다.";
+  var text = "이브자리 가족의 달 캠페인";
   var share_content = {
     method: "feed",
     name: "감사한 마음이 이불이 됩니다",
     link: "<%= Rails.application.secrets.url %>?s=fb",
-    picture: '<%= Rails.application.secrets.url + asset_url("sns/facebook_share.png") %>',
+    picture: '<%= Rails.application.secrets.url + asset_url("sns/fb_90x90.jpg") %>',
     caption: "부모님께 전하는 메세지를 남겨주세요.",
     description: text
   };
@@ -173,5 +148,48 @@ function share() {
     else {
       alert("다시 공유해주세요!");
     }
+  });
+}
+
+
+function fb_share(){
+  $.getJSON('/user_signed_in').done(function(json) {
+		if(json.result == true){
+	    var user_id = json.user_id;
+      $.ajax({
+        type: "POST",
+        url: "/viral_actions.json",
+        data: {
+          'viral_action[platform]': "Facebook",
+          'viral_action[device]': "pc",
+          'viral_action[user_id]': user_id
+      	},
+				success: function (data) {
+					share();
+				}
+      });
+		}else{
+	  	FB.login(function(response) {
+	    	if(response.authResponse) {
+		      $.ajax({
+		        type: "POST",
+		        url: "/viral_actions.json",
+		        data: {
+		          'viral_action[platform]': "Facebook",
+		          'viral_action[device]': "pc",
+		          'viral_action[user_id]': user_id
+		      	},
+						success: function (data) {
+							share();
+						}
+		      });
+					share();
+				}else{
+					alert("페이스북 로그인이 필요합니다.");
+				}
+			},{
+				scope: 'email, user_photos, user_birthday, publish_actions, publish_stream'
+			});
+		}
   });
 }

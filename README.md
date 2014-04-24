@@ -26,3 +26,14 @@ vi .gitignore
 ```
 페북 로그인 코드: http://www.maxgillett.com/post/28504483668/devise-omniauth-facebook-js-sdk-tutorial
 ```
+```
+cat cert_hug.mnv.kr.crt subca1_hug.mnv.kr.crt rootca_hug.mnv.kr.crt > hug.mnv.kr.chained.crt
+```
+```
+ie iframe 관련
+{"error":{"message":"This authorization code has expired.","type":"OAuthException","code":100}}
+https://github.com/carrot/p3p
+```
+```
+http://android.stackexchange.com/questions/5999/android-browsers-aboutdebug-what-do-those-settings-do
+```

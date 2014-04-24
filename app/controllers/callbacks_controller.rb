@@ -29,7 +29,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
     
     render json: { 
       success: (current_user ? true : false), 
-      current_user: current_user.as_json(only: [:email]) 
+      user_id: current_user.as_json(only: [:id]) 
     }
   end
   
