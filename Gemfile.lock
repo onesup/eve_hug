@@ -177,6 +177,8 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    p3p (1.0.0)
+      rack
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -317,6 +319,7 @@ DEPENDENCIES
   nokogiri
   nori
   omniauth-facebook
+  p3p
   pry
   quiet_assets
   rails (= 4.1.0.rc2)

@@ -27,6 +27,7 @@ gem 'sucker_punch', '~> 1.0'
 # gem 'sasha'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'p3p'
 # gem 'dragonfly', "~>1.0.3"
 gem 'koala'
 gem 'thor', '0.19.0'

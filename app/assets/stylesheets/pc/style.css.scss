@@ -1,4 +1,4 @@
-styles.cssa{
+a{
   text-decoration: none;
 }
 img{
@@ -6,17 +6,17 @@ img{
 }
 
 .body_class{
-  width: 850px;
+  width: 810px;
   margin: 0 auto;
   background-color: #faf3eb;
 }
 
 .container{
   width: 810px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0;
+  margin-right: 0;
   background-image: asset-url("pc/bg-image.png");
   background-repeat: repeat-y;
 }
@@ -52,7 +52,7 @@ img{
 }
 
 .share{
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .share_button{
@@ -91,7 +91,7 @@ img{
   position: relative;
   width: 480px;
   height: 50px;
-  margin: 50px auto;
+  margin: 10px auto 30px;
 }
 
 .message{
@@ -123,7 +123,7 @@ img{
   height: 60px;
   margin-left: 20px;
   padding: 10px 0px;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 .profile_image{
@@ -228,6 +228,7 @@ img{
   resize: none;
 	margin-left: 46px;
 	margin-bottom: 20px;
+	font-size:14px;
 }
 .presence-error{
 	border: 1px solid #ff3333;
