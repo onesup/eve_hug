@@ -5,7 +5,8 @@ class Comment < ActiveRecord::Base
   
   def post_message
     self.message + "
-    이벤트 참여>> http://hug.mnv.kr/fb_switch"
+    
+    감사의 메시지 남기기 > http://hug.mnv.kr/fb_switch/?s=ts"
   end
   
   def post
