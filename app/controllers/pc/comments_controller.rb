@@ -1,7 +1,11 @@
 class Pc::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    @comment.user = current_user    
+    @comment.user = current_user
+    device = "pc"
+    user_agent = UserAgent.parse(request.user_agent)
+    device = "mobile" if user_agent.mobile?
+    @comment.device = device
     respond_to do |format|
       if @comment.save  
         @comment.post
