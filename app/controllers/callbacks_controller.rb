@@ -7,6 +7,9 @@ class CallbacksController < Devise::OmniauthCallbacksController
   def facebook
     auth = request.env['omniauth.auth']
     Rails.logger.debug "@@auth: " + auth.to_s
+    device = "pc"
+    user_agent = UserAgent.parse(request.user_agent)
+    device = "mobile" if user_agent.mobile?
     # Try to find authentication first
     authentication = Authentication.find_by_provider_and_uid("facebook", auth.uid)    
     unless current_user 
@@ -15,7 +18,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
       authentication.update_attribute("token", auth.extension.token) if authentication
       unless authentication
         user = User.new
-        user.apply_omniauth(auth)
+        user.apply_omniauth(auth, device)
         saved_status = user.save(:validate => false)
       end
     # Add the new token and expiration date to the user's session
