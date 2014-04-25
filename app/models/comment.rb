@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   validates :message, presence: true
   
   def post_message
-    '"'+self.message + "'
+    "'" + self.message + "'
     
     부모님께 감사의 메시지 남기기 
     > http://event4.evezary.co.kr/fb_switch/?s=ts"
