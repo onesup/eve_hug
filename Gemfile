@@ -24,7 +24,6 @@ gem 'nokogiri'
 gem 'nori' #xml parser
 gem 'useragent'
 gem 'sucker_punch', '~> 1.0'
-# gem 'sasha'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'p3p'
