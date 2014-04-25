@@ -3,8 +3,9 @@
 	<div class="popup_content">
 		<%= form_for([:mobile, @comment]) do |f| %>
 			<%= image_tag("mobile/popup/p3_label.png", class:"popup_message_label") %>
-			<%= f.text_area(:message, 
-				{class: "popup_message_textarea", rows: "10"}) %>
+			<%= f.text_area(:message, {
+				class: valid_error_class_helper(@comment, :message, "popup_message_textarea"), 
+				rows: "10"}) %>
 			<%= image_submit_tag("mobile/popup/p3_btn.png", class:"popup_message_btn") %>
 			<%= image_tag("mobile/popup/p3_label2.png", class:"popup_message_label2") %>
 		<% end %>

@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def valid_error_class_helper(model_name, column_name, origin_class)
+    if model_name.errors[column_name].any?
+      origin_class + " valid_error"
+    else
+      origin_class
+    end
+  end
   def days_option_helper
     today = Time.now
     # today = Date.parse("2014. 4. 2")
