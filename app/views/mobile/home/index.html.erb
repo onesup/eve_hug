@@ -31,14 +31,16 @@
     <div class="comment_list_container">
       <ul class="comment_containers">
         <% @comments.each do |comment|%>
-        <li class="comment_container">
-          <%= image_tag comment.user.profile_picture, class: "profile_image" %>
-          <div class="infomation_comment">
-            <div class="author_comment"><%= comment.user.name %></div>
-            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
-            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
-          </div>
-        </li>
+				<% unless comment.user.nil? %>
+	        <li class="comment_container">
+	          <%= image_tag comment.user.profile_picture, class: "profile_image" %>
+	          <div class="infomation_comment">
+	            <div class="author_comment"><%= comment.user.name %></div>
+	            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
+	            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+	          </div>
+	        </li>
+				<% end %>
         <% end %>
       </ul>
       <div class="paging">

@@ -28,6 +28,7 @@ vi .gitignore
 ```
 ```
 cat cert_hug.mnv.kr.crt subca1_hug.mnv.kr.crt rootca_hug.mnv.kr.crt > hug.mnv.kr.chained.crt
+cat cert_event4.evezary.co.kr.crt subca1_event4.evezary.co.kr.crt rootca_event4.evezary.co.kr.crt > event4.evezary.co.kr.chained.crt
 ```
 ```
 ie iframe 관련
