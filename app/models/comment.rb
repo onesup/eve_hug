@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
     "'" + self.message + "'
     
     부모님께 감사의 메시지 남기기 
-    > http://event4.evezary.co.kr/fb_switch/?s=ts"
+    > http://event4.evezary.co.kr?s=ts"
   end
   
   def post
