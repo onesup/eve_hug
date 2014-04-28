@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :users
     resources :viral_actions 
     resources :daily_cards
-    resources :comments
+    resources :comments do
+      member do
+        put 'set_cherry_picker'
+      end
+    end    
     resources :channels
   end
 

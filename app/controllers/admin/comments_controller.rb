@@ -44,4 +44,11 @@ class Admin::CommentsController < ApplicationController
     
     redirect_to admin_comments_path
   end
+  def set_cherry_picker
+    comment = Comment.find(params[:id])
+    user = comment.user
+    user.status = "cherry_picker"
+    user.save
+    redirect_to admin_comments_path
+  end
 end

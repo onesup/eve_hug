@@ -46,12 +46,18 @@
                   <%= comment.id %>
                 </td>
                 <td>
+                <%if comment.user.status=="cherry_picker"%>
+                  <div class="cherry_picker">
+                  <%else%>                  
+                  <div>
+                  <%end%>
 									<p><%= image_tag comment.user.profile_picture %></p>
                   <p>
 										<%= link_to comment.user.name, 
 											comment.user.facebook_url, target:"_blank" %>
 									</p>
 									<p><%= comment.user.comments_count %>회 참여</p>
+                </div>
                 </td>
                 <td><div style="width:400px; line-height:24px;"><p>
                   <%= comment.message %>
@@ -64,6 +70,8 @@
                 </td>
                 <td>
                   <p><%= link_to "삭제", admin_comment_path(comment), method: :delete, confirm: "삭제하시겠습니까?" %></p>
+                  <p><%= link_to "체리피커", set_cherry_picker_admin_comment_path(comment), method: :put, confirm: "정말 체리피커입니까?" %>
+                  </p>
                 </td>
               </tr>
             <% end %>
