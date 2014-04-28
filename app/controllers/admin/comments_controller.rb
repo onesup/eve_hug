@@ -7,7 +7,7 @@ class Admin::CommentsController < ApplicationController
     @comments_counts_daily = Comment.select(
       "date(comments.created_at) as created_date,
       sum(case when comments.device = 'pc' then 1 else 0 end) as pc_count,
-      sum(case when comments.device = 'mobie' then 1 else 0 end) as mobile_count,
+      sum(case when comments.device = 'mobile' then 1 else 0 end) as mobile_count,
       count(*) as total_count")
         .group("date(comments.created_at)")
         .order("date(comments.created_at)")
