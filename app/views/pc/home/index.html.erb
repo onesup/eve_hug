@@ -43,7 +43,7 @@
 									<%= comment.created_at.strftime("%Y.%m.%d")%>
 								</span>
 							</div>
-	            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+	            <div class="comment"><%= comment.message %></div>
 	          </div>
 	        </div>
 				<% end %>
