@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'dashboard#index'
-    resources :traffic_logs
+    resources :traffic_logs do
+      member do
+        get 'logs'
+      end
+    end
     resources :users
     resources :viral_actions 
     resources :daily_cards

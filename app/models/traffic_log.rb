@@ -1,41 +1,46 @@
 class TrafficLog < ActiveRecord::Base
-
-  def self.count_by_date(options = {})
-      column = options[:column] || "created_at"
-      max_date = (options[:max_date] || Time.zone.now).midnight
-      num_days = options[:num_days] || 20
-      min_date = (options[:min_date] || max_date.advance(:days => -(num_days-1))).midnight
-
-      # if the db can't do (named) timezones, we do the best we can (dates on the
-      # other side of dst will be wrong though)
-      offset = max_date.utc_offset
-
-      expression = case connection.adapter_name
-      when 'MySQL', 'Mysql2'
-        # TODO: detect mysql named timezone support and use it
-        offset = "%s%02d:%02d" % [offset < 0 ? "-" : "+", offset.abs / 3600, offset.abs % 3600]
-        "DATE(CONVERT_TZ(#{column}, '+00:00', '#{offset}'))"
-      when /sqlite/
-        "DATE(STRFTIME('%s', #{column}) + #{offset}, 'unixepoch')"
-      when 'PostgreSQL'
-        "((#{column} || '-00')::TIMESTAMPTZ AT TIME ZONE '#{Time.zone.tzinfo.name}')::DATE"
-      end
-      puts expression
-      result = count(
-        :conditions => [
-          "#{column} >= ? AND #{column} < ?",
-          min_date,
-          max_date.advance(:days => 1)
-        ],
-        :group => expression,
-        :order => expression
-      )
-      # mysql gives us date keys, sqlite/postgres don't 
-      return result if result.keys.first.is_a?(Date)
-      Hash[result.map { |date, count|
-        [Time.zone.parse(date).to_date, count]
-      }]
-    end
-
-
+  def self.first_day()
+    self.select("created_at").order("created_at").limit(1) 
+  end
+    
+  def self.paginate_by_week(page)
+    page ||= 1 
+    page = page.to_i
+    start_date = (DateTime.now-DateTime.now.wday-7*(page-1)).beginning_of_day
+    end_date = (DateTime.now+(7-DateTime.now.wday)-7*(page-1)).beginning_of_day
+    self.source_by_weekday(start_date,end_date)
+  end
+  
+  def self.source_by_weekday(start_date, end_date)
+    self.select("source
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 1 then 1 else 0 end) as 'sun'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 2 then 1 else 0 end) as 'mon'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 3 then 1 else 0 end) as 'tue'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 4 then 1 else 0 end) as 'wed'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 5 then 1 else 0 end) as 'thu'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 6 then 1 else 0 end) as 'fri'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 7 then 1 else 0 end) as 'sat' ")
+        .where("created_at >= ? and created_at < ?", start_date, end_date)
+        .group("source").order("source")
+  end
+  
+  def self.paginate_by_week_sum(page)
+    page ||= 1 
+    page = page.to_i
+    start_date = (DateTime.now-DateTime.now.wday-7*(page-1)).beginning_of_day
+    end_date = (DateTime.now+(7-DateTime.now.wday)-7*(page-1)).beginning_of_day
+    self.source_by_weekday_sum(start_date,end_date)
+  end
+  
+  def self.source_by_weekday_sum(start_date,end_date)
+    self.select(
+      "sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 1 then 1 else 0 end) as 'sun'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 2 then 1 else 0 end) as 'mon'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 3 then 1 else 0 end) as 'tue'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 4 then 1 else 0 end) as 'wed'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 5 then 1 else 0 end) as 'thu'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 6 then 1 else 0 end) as 'fri'
+      ,sum(case when DayofWeek(convert_tz(created_at,'+00:00','+09:00')) = 7 then 1 else 0 end) as 'sat' ")
+        .where("created_at >= ? and created_at < ?", start_date, end_date)
+  end
 end
