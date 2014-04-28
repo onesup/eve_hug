@@ -49,6 +49,7 @@ $(document).ready(function(){
   $("#new_comment").bind("ajax:success", function(evt,data,status,xhr){
     response = JSON.parse(xhr.responseText);
     if(response.status==="success"){
+			fb_tracking();
       $("#popup_finish").bPopup({
         follow: [false, false], //x, y
         positionStyle: 'fixed',
@@ -189,4 +190,18 @@ function fb_share(){
 			});
 		}
   });
+}
+function fb_tracking(){
+	var fb_param = {};
+	fb_param.pixel_id = '6014588119981';
+	fb_param.value = '0.00';
+	fb_param.currency = 'USD';
+	(function(){
+	var fpw = document.createElement('script');
+	fpw.async = true;
+	fpw.src = '//connect.facebook.net/ko_KR/fp.js';
+	var ref = document.getElementsByTagName('script')[0];
+	ref.parentNode.insertBefore(fpw, ref);
+	})();
+	
 }
