@@ -2,15 +2,17 @@ class Admin::TrafficLogsController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
   
-  def index
-    
-    @traffic_stats = TrafficLog.select("date(convert_tz(created_at,'+00:00','+09:00')) as created_date
+  def index    
+    @traffic_stats = TrafficLog.select(
+    "date(convert_tz(created_at,'+00:00','+09:00')) as created_date
     ,sum(case when source='home' then 1 else 0 end) as home_count
     ,sum(case when source='ts' then 1 else 0 end) as ts_count
     ,sum(case when source='fb_share' then 1 else 0 end) as fb_share_count
     ,sum(case when source='ks' then 1 else 0 end) as ks_count
     ,sum(case when source not in ('home', 'ts', 'fb_share' ,'ks') then 1 else 0 end) as etc_count
-    ,count(*) as total_count").group("date(convert_tz(created_at,'+00:00','+09:00'))").order("date(convert_tz(created_at,'+00:00','+09:00'))")
+    ,count(*) as total_count")
+    .group("date(convert_tz(created_at,'+00:00','+09:00'))")
+    .order("date(convert_tz(created_at,'+00:00','+09:00'))")
     @traffic_stats_sum = TrafficLog.select("
      sum(case when source='home' then 1 else 0 end) as home_count
     ,sum(case when source='ts' then 1 else 0 end) as ts_count

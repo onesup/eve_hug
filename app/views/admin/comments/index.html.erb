@@ -86,7 +86,10 @@
                 </td>
                 <td>
 									<p><%= image_tag comment.user.profile_picture %></p>
-                  <p><%= link_to comment.user.name, comment.user.facebook_url %></p>
+                  <p>
+										<%= link_to comment.user.name, 
+											comment.user.facebook_url, target:"_blank" %>
+									</p>
 									<p><%= comment.user.comments_count %>회 참여</p>
                 </td>
                 <td><div style="width:400px; line-height:24px;"><p>
