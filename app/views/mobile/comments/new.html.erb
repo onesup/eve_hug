@@ -1,12 +1,15 @@
 <div class="popup">
 	<%= render "mobile/home/popup_header" %>
 	<div class="popup_content">
-		<%= form_for([:mobile, @comment]) do |f| %>
+		<%= form_for([:mobile, @comment], 
+			id:"new_comment", remote: true, authenticity_token: true) do |f| %>
 			<%= image_tag("mobile/popup/p3_label.png", class:"popup_message_label") %>
 			<%= f.text_area(:message, {
 				class: valid_error_class_helper(@comment, :message, "popup_message_textarea"), 
 				rows: "10"}) %>
-			<%= image_submit_tag("mobile/popup/p3_btn.png", class:"popup_message_btn") %>
+			<div id="comment_submit">
+				<%= image_submit_tag("mobile/popup/p3_btn.png", class:"popup_message_btn") %>
+			</div>
 			<%= image_tag("mobile/popup/p3_label2.png", class:"popup_message_label2") %>
 		<% end %>
 	</div>

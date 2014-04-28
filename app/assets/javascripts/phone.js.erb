@@ -12,97 +12,17 @@ $(document).ready(function(){
     });
 		FB.Canvas.setSize();
 		FB.Canvas.setAutoGrow();
-		$("#facebook_share_link").click(function(e){
-			e.preventDefault();
-      $.ajax({
-          type: "POST",
-          url: "/viral_actions.json",
-          data: {
-            'viral_action[platform]': "Facebook",
-            'viral_action[device]': "mobile"
-          },
-          success: function (data) {
-          }
-      });
-			share();
-		});
-	});
-	$("#kakaotalk_share_link").click(function(e){
-		e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "/viral_actions.json",
-      data: {
-        'viral_action[platform]': "Kakaotalk",
-        'viral_action[device]': "mobile"
-      },
-      success: function (data) {
-      }
-      });
-		kakao.link("talk").send({
-			msg : "완전 득템 소식~\n피부생일?!\n에센스 선물까지 준다고!?\n\n숨37과 처음 만나는 순간,\n피부생일이 시작됩니다.\n\nMake Your Skin Birthday\nSponsored by 숨37\n",
-			url : "http://bit.ly/su-m37-kt",
-			appid : "skin_birthday",
-			appver : "1.0",
-			appname : "",
-			type : "link"
-		});
-	});
-  $("#kakaostory_share_link").click(function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "/viral_actions.json",
-      data: {
-        'viral_action[platform]': "Kakaostory",
-        'viral_action[device]': "mobile"
-      },
-      success: function (data) {
-      }
-      });
-    kakao.link("story").send({
-      post : "완전 득템 소식~\n피부생일?!\n에센스 선물까지 준다고!?\nhttp://bit.ly/su-m37-ks\n\n숨37과 처음 만나는 순간,\n피부생일이 시작됩니다.\n\nMake Your Skin Birthday\nSponsored by 숨37",
-      appid : "skin_birthday",
-      appver : "1.0",
-      appname : "Skin Birthday",
-      urlinfo : JSON.stringify({
-        title:"Skin Birthday",
-        desc:"Make Your Skin Birthday Sponsored by 숨37",
-        imageurl:['https://<%= Rails.application.secrets.url + asset_url("sns/facebook_share.jpg") %>'],
-        type:"article"
-      })
-    });
-  });
-  $('#select_month').change(function(e){
-    e.preventDefault();
-    var month;
-    var days;
-    month = $("#select_month").val();
-		d = new Date();
-		this_day = d.getDate();
-    if(month === '3'){
-			add_days = range(this_day, 31);
-			$("#select_day option").remove();
-			$.each(add_days, function( index, value ){
-				$("#select_day").append($('<option>',{
-					value:value,
-					text:value
-				}));
-			});
-    }else if(month === '4'){
-			add_days = range(1, 27);
-			$("#select_day option").remove();
-			$.each(add_days, function( index, value ){
-				$("#select_day").append($('<option>',{
-					value:value,
-					text:value
-				}));
-			});
-		}
+		var spinner;
+		$("#new_comment").on("ajax:before", function(){
+			spinner = new_comment_spinner();
+		}).on("ajax:success", function(e, data, status, xhr) {
+		  spinner.stop();
+		}).on("ajax:error", function(e, xhr, status, error) {
+			spinner.stop();
+		  alert("등록이 되지 않았습니다. 브라우저를 껏다 켜 보세요^^;");
+		});		
 	});
 });
-
-
 
 function share() {
   var text = ".";
@@ -125,10 +45,26 @@ function share() {
   });
 }
 
-function range(lowEnd, highEnd){
-	var list = [];
-	for (var i = lowEnd; i <= highEnd; i++) {
-	    list.push(i);
-	}
-	return list;
-}
+function new_comment_spinner(){
+  var opts = {
+    lines: 13, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 10, // The line thickness
+    radius: 5, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)spin.js
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#fff', // #rgb or #rrggbb or array of colors
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    left: 235-35,
+    top: 35-35
+  };  
+  var target = document.getElementById('comment_submit');
+  var spinner = new Spinner(opts).spin(target);
+  return spinner;   
+};
