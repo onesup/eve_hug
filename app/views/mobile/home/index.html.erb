@@ -37,7 +37,7 @@
 	          <div class="infomation_comment">
 	            <div class="author_comment"><%= comment.user.name %></div>
 	            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
-	            <div class="comment"><%= shorten_helper(70,comment.message) %></div>
+	            <div class="comment"><%= comment.message %></div>
 	          </div>
 	        </li>
 				<% end %>
