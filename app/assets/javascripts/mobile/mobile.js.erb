@@ -7,6 +7,17 @@ $(document).ready(function(){
 	      cookie : true, // enable cookies to allow the server to access the session
 	      xfbml  : true  // parse XFBML
 	    });
+		var spinner;
+		$("#new_comment").on("ajax:before", function(){
+			e.preventDefault();
+			spinner = new_comment_spinner();
+		}).on("ajax:success", function(e, data, status, xhr) {
+		  spinner.stop();
+			message_new_redirect();
+		}).on("ajax:error", function(e, xhr, status, error) {
+			spinner.stop();
+		  alert("등록이 되지 않았습니다. 브라우저를 껏다 켜 보세요^^;");
+		});		
 	
 		$("#comment_btn").click(function(e){
 			e.preventDefault();
@@ -63,6 +74,9 @@ $(document).ready(function(){
 
 function message_input_redirect(){
 	window.location.assign("/mobile/comments/new")
+};
+function message_new_redirect(){
+	window.location.assign("/mobile/thanks")
 };
 
 function fb_login_spinner(){
@@ -167,3 +181,29 @@ function fb_login(){
 		scope: 'email, user_photos, user_birthday, publish_actions, publish_stream'
 	}); // These are the permissions you are requesting
 }
+
+function new_comment_spinner(){
+	div_width_center = $("#comment_submit").width() / 2;
+	div_heifht_center = $("#comment_submit").height() / 2;
+  var opts = {
+    lines: 13, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 10, // The line thickness
+    radius: 5, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)spin.js
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#fff', // #rgb or #rrggbb or array of colors
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    left: div_width_center-35,
+    top: div_heifht_center-35
+  };  
+  var target = document.getElementById('comment_submit');
+  var spinner = new Spinner(opts).spin(target);
+  return spinner;   
+};

@@ -16,7 +16,7 @@ class Admin::ViralActionsController < ApplicationController
       sum(case when viral_actions.device = 'mobile' then 1 else 0 end) as mobile_count, 
       count(*) as total_count")
     @users_counts_daily = User.select(
-      "date(convert_tz(created_at,'+00:00','+09:00')) as created_date,
+      "date(convert_tz(updated_at,'+00:00','+09:00')) as created_date,
       sum(case when 
         (users.viral_actions_count > 0) then 1 else 0 end) 
         as pc_count,
@@ -24,10 +24,9 @@ class Admin::ViralActionsController < ApplicationController
         (users.viral_actions_count > 0) then 1 else 0 end) 
         as mobile_count,
       sum(case when (users.viral_actions_count > 0) then 1 else 0 end) as total_count")
-        .group("date(convert_tz(created_at,'+00:00','+09:00'))")
-        .order("date(convert_tz(created_at,'+00:00','+09:00'))")
+        .group("date(convert_tz(updated_at,'+00:00','+09:00'))")
+        .order("date(convert_tz(updated_at,'+00:00','+09:00'))")
     @users_counts_sum = User.select(
       "sum(case when (users.viral_actions_count > 0) then 1 else 0 end) as total_count")
-  
   end
 end
