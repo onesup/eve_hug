@@ -8,7 +8,7 @@ $(document).ready(function(){
 	      xfbml  : true  // parse XFBML
 	    });
 		var spinner;
-		$("#new_comment").on("ajax:before", function(){
+		$("#new_comment").on("ajax:before", function(e, data, status, xhr){
 			e.preventDefault();
 			spinner = new_comment_spinner();
 		}).on("ajax:success", function(e, data, status, xhr) {
