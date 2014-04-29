@@ -46,7 +46,11 @@ $(document).ready(function(){
     $(".image_paging").removeClass('icon_active');
     $(this).addClass('icon_active');
   });
-  $("#new_comment").bind("ajax:success", function(evt,data,status,xhr){
+  $("#new_comment").bind("ajax:before", function(e, data, status, xhr){
+		e.preventDefault();
+		spinner = new_comment_spinner();
+  }).bind("ajax:success", function(evt,data,status,xhr){
+		spinner.stop();
     response = JSON.parse(xhr.responseText);
     if(response.status==="success"){
 			fb_tracking();
@@ -205,3 +209,28 @@ function fb_tracking(){
 	})();
 	
 }
+function new_comment_spinner(){
+	div_width_center = $("#data_submit_div").width() / 2;
+	div_heifht_center = $("#data_submit_div").height() / 2;
+  var opts = {
+    lines: 13, // The number of lines to draw
+    length: 20, // The length of each line
+    width: 10, // The line thickness
+    radius: 5, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)spin.js
+    rotate: 0, // The rotation offset
+    direction: 1, // 1: clockwise, -1: counterclockwise
+    color: '#fff', // #rgb or #rrggbb or array of colors
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    left: div_width_center-35,
+    top: div_heifht_center-35
+  };  
+  var target = document.getElementById('data_submit_div');
+  var spinner = new Spinner(opts).spin(target);
+  return spinner;   
+};

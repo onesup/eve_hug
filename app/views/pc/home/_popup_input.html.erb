@@ -4,7 +4,8 @@
   <% end %>
   <%= form_for([:pc, @comment], remote: true, html: {"data-type" => "json"}) do |f| %>
 	  <%= f.text_area(:message, {class: "input_textarea", "data-name" => "post_message"}) %>
-	  <br/>
-	  <%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit", class:"btn_submit"}) %>
+		<div id="data_submit_div">
+	  	<%= image_submit_tag("pc/popup/btn_submit.png", {id: "data_submit", class:"btn_submit"}) %>
+		</div>
   <% end %>
 </div>
