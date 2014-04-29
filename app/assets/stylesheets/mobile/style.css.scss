@@ -270,7 +270,7 @@ a:link{
 
 .letter_contents{
  	position: absolute;
-	top: 4%;
+	bottom: 30%;
 	left: 18%;
 	width: 63%;
 	img.letter-image{
@@ -285,4 +285,7 @@ a:link{
 
 .valid_error{
 	border: 1px solid #f33;
+}
+.envelope{
+	position: relative;
 }

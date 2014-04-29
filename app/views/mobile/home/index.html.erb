@@ -17,11 +17,13 @@
     </div>
   </div>
   <div class="content">
-    <div class="letter_contents">
-      <%= image_tag DailyCard.today_image.card_image_mobile, class: "letter-image"%>
-    </div>
-    <%= image_tag("mobile/main/content_letter_back.png", class: "content_letter_element") %>
-    <%= image_tag("mobile/main/content_letter_front.png", class: "content_letter_element content_letter_front") %>
+		<div class="envelope">
+	    <div class="letter_contents">
+	      <%= image_tag DailyCard.today_image.card_image_mobile, class: "letter-image"%>
+	    </div>
+	    <%= image_tag("mobile/main/content_letter_back.png", class: "content_letter_element") %>
+	    <%= image_tag("mobile/main/content_letter_front.png", class: "content_letter_element content_letter_front") %>
+		</div>
     <div class="show">
       <%= image_tag("mobile/main/content_label.png", class: "content_label") %>
       <%= link_to "show" do %>
@@ -31,16 +33,16 @@
     <div class="comment_list_container">
       <ul class="comment_containers">
         <% @comments.each do |comment|%>
-				<% unless comment.user.nil? %>
-	        <li class="comment_container">
-	          <%= image_tag comment.user.profile_picture, class: "profile_image" %>
-	          <div class="infomation_comment">
-	            <div class="author_comment"><%= comment.user.name %></div>
-	            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
-	            <div class="comment"><%= comment.message %></div>
-	          </div>
-	        </li>
-				<% end %>
+					<% unless comment.user.nil? %>
+		        <li class="comment_container">
+		          <%= image_tag comment.user.profile_picture, class: "profile_image" %>
+		          <div class="infomation_comment">
+		            <div class="author_comment"><%= comment.user.name %></div>
+		            <div class="date_comment"><%= comment.created_at.strftime("%y.%m.%d")%></div>
+		            <div class="comment"><%= comment.message %></div>
+		          </div>
+		        </li>
+					<% end %>
         <% end %>
       </ul>
       <div class="paging">
