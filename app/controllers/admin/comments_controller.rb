@@ -47,8 +47,15 @@ class Admin::CommentsController < ApplicationController
   def set_cherry_picker
     comment = Comment.find(params[:id])
     user = comment.user
-    user.status = "cherry_picker"
+    if user.status == "cherry_picker"
+      user.status = ""
+    else
+      user.status = "cherry_picker"
+    end
     user.save
-    redirect_to admin_comments_path
+    
+    respond_to do |format|
+      format.json { render json: {status: "success", user_id: user.id, user_status: user.status}   }
+    end
   end
 end
