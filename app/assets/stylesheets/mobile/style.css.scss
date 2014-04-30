@@ -3,8 +3,7 @@
 }
 body{
 	margin: 0;
-	background-color: #EBDCCE;
-	background-image: asset-url('mobile/main/background.png');
+	background: #EBDCCE asset-url('mobile/main/background.png') repeat-y;
 }
 .contain{
 	width: 100%;
