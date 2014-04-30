@@ -39,10 +39,18 @@ class Admin::CommentsController < ApplicationController
   
   def destroy
     comment = Comment.find(params[:id])
-    comment.status = "deleted"
+    if comment.status =="deleted"
+      comment.status = "show"
+    else
+      comment.status = "deleted"
+    end
+    
     comment.save()
     
-    redirect_to admin_comments_path
+    respond_to do |format|
+      format.json { render json: {status: "success", comment_id: comment.id, comment_status: comment.status}   }
+    end
+    
   end
   def set_cherry_picker
     comment = Comment.find(params[:id])

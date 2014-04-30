@@ -8,7 +8,35 @@ $(document).ready(function(){
     var yn = $(this).attr("cherry_picker_yn");
     cherrypicker_set(comment_id,yn);
   });
+  $('.delete_comment').click(function(e){
+    e.preventDefault();
+    var comment_id = $(this).attr("comment_id");
+    delete_comment(comment_id);
+  });
 });
+function delete_comment(comment_id){
+  $.ajax({
+   type: "DELETE",
+   url: "/admin/comments/"+comment_id+".json",
+   data: {
+     'id': comment_id
+   },
+   success: function(data){
+     if (data.comment_status == "deleted")
+     {
+       $("#data-table tr[comment_id='"+data.comment_id+"']").addClass("deleted")
+       $("#data-table tr[comment_id='"+data.comment_id+"'] td.status").text("deleted");
+       $("#data-table tr[comment_id='"+data.comment_id+"'] td.command p a[class='delete_comment']").text("복구");
+     }
+     else
+     {
+       $("#data-table tr[comment_id='"+data.comment_id+"']").removeClass("deleted")
+       $("#data-table tr[comment_id='"+data.comment_id+"'] td.status").text("show");
+       $("#data-table tr[comment_id='"+data.comment_id+"'] td.command p a[class='delete_comment']").text("삭제");
+     }
+   } 
+  });
+};
 function cherrypicker_set(comment_id,yn){
   if (yn=="y")
   {
