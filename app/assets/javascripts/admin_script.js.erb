@@ -1,0 +1,44 @@
+function user_signed_in(){
+};		
+
+$(document).ready(function(){
+  $('.set_cherry_picker').click(function(e){
+    e.preventDefault();
+    var comment_id = $(this).attr("comment_id");
+    var yn = $(this).attr("cherry_picker_yn");
+    cherrypicker_set(comment_id,yn);
+  });
+});
+function cherrypicker_set(comment_id,yn){
+  if (yn=="y")
+  {
+      $.ajax({
+        type: "PUT",
+        url: "/admin/comments/"+comment_id+"/set_cherry_picker.json",
+        data: {
+          'id': comment_id
+      	},
+				success: function (data) {
+          $("#data-table tr[user_id='"+data.user_id+"'] td.user div").addClass("cherry_picker");
+          $("#data-table tr[user_id='"+data.user_id+"'] td.command p a[class='set_cherry_picker']").text("체리픽커해제");
+          $("#data-table tr[user_id='"+data.user_id+"'] td.command p a[class='set_cherry_picker']").attr("cherry_picker_yn","n");
+        }
+      });
+  }
+  else
+  {
+      $.ajax({
+        type: "PUT",
+        url: "/admin/comments/"+comment_id+"/set_cherry_picker.json",
+        data: {
+          'id': comment_id
+      	},
+				success: function (data) {
+          $("#data-table tr[user_id='"+data.user_id+"'] td.user div").removeClass("cherry_picker");
+          $("#data-table tr[user_id='"+data.user_id+"'] td.command p a[class='set_cherry_picker']").text("체리픽커");
+          $("#data-table tr[user_id='"+data.user_id+"'] td.command p a[class='set_cherry_picker']").attr("cherry_picker_yn","y");
+        }
+      });
+  }
+  
+  };

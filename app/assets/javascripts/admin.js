@@ -17,3 +17,4 @@
 //= require bootstrap.min
 //= require scripts
 //= require jquery.shorten.1.0
+//= require admin_script

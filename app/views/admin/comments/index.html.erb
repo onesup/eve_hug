@@ -38,14 +38,14 @@
           <tbody>
           <% @comments.each do |comment| %>
            	<%if comment.status=="deleted" %>
-              <tr class="deleted">
+              <tr class="deleted" user_id="<%=comment.user.id%>">
             <%else%>
-              <tr class="">
+              <tr class="" user_id="<%=comment.user.id%>">
 						<%end%>
                 <td>
                   <%= comment.id %>
                 </td>
-                <td>
+                <td class="user">
                 <%if comment.user.status=="cherry_picker"%>
                   <div class="cherry_picker">
                   <%else%>                  
@@ -68,10 +68,15 @@
                 <td class="created_at">
                   <p><%= comment.created_at.strftime("%m.%d %H:%M") %></p>
                 </td>
-                <td>
+                <td class="command">
                   <p><%= link_to "삭제", admin_comment_path(comment), method: :delete, confirm: "삭제하시겠습니까?" %></p>
-                  <p><%= link_to "체리피커", set_cherry_picker_admin_comment_path(comment), method: :put, confirm: "정말 체리피커입니까?" %>
+                  <%if comment.user.status=="cherry_picker"%>
+                  <p><%= link_to "체리피커해제", "#", class: "set_cherry_picker",cherry_picker_yn: "n", comment_id: comment.id%>
                   </p>
+                  <%else%>
+                  <p><%= link_to "체리피커", "#",class: "set_cherry_picker",cherry_picker_yn: "y", comment_id: comment.id %>
+                  </p>
+                  <%end%>
                 </td>
               </tr>
             <% end %>
