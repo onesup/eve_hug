@@ -13,7 +13,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
     # Try to find authentication first
     authentication = Authentication.find_by_provider_and_uid("facebook", auth.uid)    
     unless current_user 
-    # Request a new 60 day token using the current 2 hour token obtained from fb
+      # Request a new 60 day token using the current 2 hour token obtained from fb
       auth.merge!(extend_fb_token(auth.credentials.token))
       authentication.update_attribute("token", auth.extension.token) if authentication
       unless authentication
@@ -21,7 +21,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
         user.apply_omniauth(auth, device)
         saved_status = user.save(:validate => false)
       end
-    # Add the new token and expiration date to the user's session
+      # Add the new token and expiration date to the user's session
     
       create_or_refresh_fb_session(auth)
       if saved_status.nil? || saved_status
@@ -44,9 +44,9 @@ class CallbacksController < Devise::OmniauthCallbacksController
     # require "uri"
 
     uri = URI.parse(
-      "https://graph.facebook.com/oauth/access_token?client_id=" + Rails.application.secrets.fb_app_id.to_s + 
-      "&client_secret=" + Rails.application.secrets.fb_app_secret + 
-      "&grant_type=fb_exchange_token&fb_exchange_token=" + token )
+    "https://graph.facebook.com/oauth/access_token?client_id=" + Rails.application.secrets.fb_app_id.to_s + 
+    "&client_secret=" + Rails.application.secrets.fb_app_secret + 
+    "&grant_type=fb_exchange_token&fb_exchange_token=" + token )
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -60,14 +60,14 @@ class CallbacksController < Devise::OmniauthCallbacksController
   def create_or_refresh_fb_session(auth_hash_or_extension_hash)
     if auth_hash_or_extension_hash.extension
       session.merge!({
-          "fb_access_token" => auth_hash_or_extension_hash.extension.token,
-          "fb_expiry" => auth_hash_or_extension_hash.extension.expiry.to_i + Time.now.to_i
-      })
+        "fb_access_token" => auth_hash_or_extension_hash.extension.token,
+        "fb_expiry" => auth_hash_or_extension_hash.extension.expiry.to_i + Time.now.to_i
+        })
     elsif auth_hash_or_extension_hash.credentials
-      session.merge!({
+        session.merge!({
           "fb_access_token" => auth_hash_or_extension_hash.credentials.token,
           "fb_expiry" => auth_hash_or_extension_hash.credentials.expires_at
-      })
+          })
     end
   end
 end
