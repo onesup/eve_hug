@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   
   def post
     user = self.user
-    api = Koala::Facebook::API.new(self.user.authentications.first.token)
+    api = Koala::Facebook::API.new(user.authentications.first.token)
     # pictures = %w(posting_img posting_01 posting_02 posting_03)
     #  picture = "#{Rails.root.to_s}/app/assets/images/#{pictures.shuffle.last}.jpg"
     begin 

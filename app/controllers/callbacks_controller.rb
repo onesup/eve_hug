@@ -12,7 +12,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
     device = "mobile" if user_agent.mobile?
     # Try to find authentication first
     authentication = Authentication.find_by_provider_and_uid("facebook", auth.uid)    
-    unless current_user 
+    if authentication.nil? or current_user.nil?
       # Request a new 60 day token using the current 2 hour token obtained from fb
       auth.merge!(extend_fb_token(auth.credentials.token))
       authentication.update_attribute("token", auth.extension.token) if authentication
@@ -58,16 +58,17 @@ class CallbacksController < Devise::OmniauthCallbacksController
   end
   
   def create_or_refresh_fb_session(auth_hash_or_extension_hash)
+    Rails.logger.info("@%@%@%@%@%@"+auth_hash_or_extension_hash.to_s)
     if auth_hash_or_extension_hash.extension
       session.merge!({
         "fb_access_token" => auth_hash_or_extension_hash.extension.token,
         "fb_expiry" => auth_hash_or_extension_hash.extension.expiry.to_i + Time.now.to_i
-        })
+      })
     elsif auth_hash_or_extension_hash.credentials
         session.merge!({
           "fb_access_token" => auth_hash_or_extension_hash.credentials.token,
           "fb_expiry" => auth_hash_or_extension_hash.credentials.expires_at
-          })
+        })
     end
   end
 end
