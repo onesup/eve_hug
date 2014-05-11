@@ -3,7 +3,7 @@ class Admin::CommentsController < ApplicationController
   before_action :authenticate_user!
    
   def index
-    @comments = Comment.all.order('id desc').page(params[:page]).per(200)
+    @comments = Comment.includes(:user).order('id desc').page(params[:page]).per(200)
     @comments_counts_daily = Comment.select(
       "date(convert_tz(created_at,'+00:00','+09:00')) as created_date,
       sum(case when 

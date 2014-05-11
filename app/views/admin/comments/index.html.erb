@@ -37,26 +37,28 @@
           </thead>
           <tbody>
           <% @comments.each do |comment| %>
+						<% user = User.new %>
+						<% user = comment.user unless comment.user.nil? %>
            	<%if comment.status=="deleted" %>
-              <tr class="deleted" user_id="<%=comment.user.id%>" comment_id="<%=comment.id%>">
+              <tr class="deleted" user_id="<%= user.id%>" comment_id="<%=comment.id%>">
             <%else%>
-              <tr class="" user_id="<%=comment.user.id%>" comment_id="<%=comment.id%>">
+              <tr class="" user_id="<%= user.id %>" comment_id="<%=comment.id%>">
 						<%end%>
                 <td>
                   <%= comment.id %>
                 </td>
                 <td class="user">
-                <%if comment.user.status=="cherry_picker"%>
+                <%if user.status=="cherry_picker"%>
                   <div class="cherry_picker">
                   <%else%>                  
                   <div>
                   <%end%>
-									<p><%= image_tag comment.user.profile_picture %></p>
+									<p><%= image_tag user.profile_picture %></p>
                   <p>
-										<%= link_to comment.user.name, 
-											comment.user.facebook_url, target:"_blank" %>
+										<%= link_to user.name, 
+											user.facebook_url, target:"_blank" %>
 									</p>
-									<p><%= comment.user.comments_count %>회 참여</p>
+									<p><%= user.comments_count %>회 참여</p>
                 </div>
                 </td>
                 <td><div style="width:400px; line-height:24px;"><p>
@@ -74,7 +76,7 @@
                   <%else%>
                     <p><%= link_to "삭제", "#", class: "delete_comment", comment_id: comment.id%></p>
                   <%end%>
-                  <%if comment.user.status=="cherry_picker"%>
+                  <%if user.status=="cherry_picker"%>
                   <p><%= link_to "체리피커해제", "#", class: "set_cherry_picker",cherry_picker_yn: "n", comment_id: comment.id%>
                   </p>
                   <%else%>
