@@ -4,18 +4,38 @@ function user_signed_in(){
 $(document).ready(function(){
   $('#message_button').click(function(e) {
     e.preventDefault();
-    $.getJSON('/user_signed_in').done(function(json) {
-      if(json.result == true){
-        message_input_popup();
-      }else{
-        fb_login();
-      }
-    });		
+		$.ajax({
+			type: 'get',
+			url: '/event_finish.json',
+			success: function (data) {
+				if(data.result == "finish"){
+					alert("아쉽네요!\n다음엔 조금더 서둘러주세요~");
+				}else{
+			    $.getJSON('/user_signed_in').done(function(json) {
+			      if(json.result == true){
+			        message_input_popup();
+			      }else{
+			        fb_login();
+			      }
+			    });
+				}
+			}
+		});
   });
 
   $("#facebook_share_link").click(function(e){
     e.preventDefault();
-    fb_share();
+		$.ajax({
+			type: 'get',
+			url: '/event_finish.json',
+			success: function (data) {
+				if(data.result == "finish"){
+					alert("아쉽네요!\n다음엔 조금더 서둘러주세요~");
+				}else{
+					fb_share();
+				}
+			}
+		});
   });
   $("#close_finish").click(function(e) {
     e.preventDefault();

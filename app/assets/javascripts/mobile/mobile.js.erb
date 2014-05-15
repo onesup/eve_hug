@@ -21,7 +21,17 @@ $(document).ready(function(){
 	
 		$("#comment_btn").click(function(e){
 			e.preventDefault();
-			fb_login();
+			$.ajax({
+				type: 'get',
+				url: '/event_finish.json',
+				success: function (data) {
+					if(data.result == "finish"){
+						alert("아쉽네요!\n다음엔 조금더 서둘러주세요~");
+					}else{
+						fb_login();
+					}
+				}
+			});
 		});
 		$('#popup_list_btnBox').ready(function(){
 			$('#popup_list_btn_id_1').css('background-image', "url(<%= asset_path('mobile/popup/p2_list_select.png') %>)");
@@ -45,7 +55,17 @@ $(document).ready(function(){
 			});
 	    $("#facebook_share_link").click(function(e){
 	      e.preventDefault();
-		    fb_share();
+				$.ajax({
+					type: 'get',
+					url: '/event_finish.json',
+					success: function (data) {
+						if(data.result == "finish"){
+							alert("아쉽네요!\n다음엔 조금더 서둘러주세요~");
+						}else{
+							fb_share();
+						}
+					}
+				});
 	    });
 			/*
 			$('#popup_list_btn_id_4').click(function(){

@@ -31,4 +31,13 @@ class WebSwitchController < ApplicationController
       redirect_to pc_index_path({s: params[:s]})
     end
   end
+  
+  def event_finish
+    finish_time = DateTime.parse("2014-05-15 23:58:00 +0900")
+    result = "running"
+    result = "finish" if Time.now > finish_time
+    respond_to do |format|
+      format.json { render json: {result: result}, status: :ok}
+    end
+  end
 end
