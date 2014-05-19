@@ -29,4 +29,8 @@ class Admin::ViralActionsController < ApplicationController
     @users_counts_sum = User.select(
       "sum(case when (users.viral_actions_count > 0) then 1 else 0 end) as total_count")
   end
+  
+  def users
+    @users = User.where("viral_actions_count > 0").where(status: nil).order("id desc").page(params[:page]).per(200)
+  end
 end

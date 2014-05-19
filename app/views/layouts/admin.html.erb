@@ -67,47 +67,52 @@
               <% if user_signed_in? %>
                 <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li>
-                          <%= link_to admin_users_path do %>
-                            <i class="icon-chevron-right"></i>신청자 현황
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to admin_comments_path do %>
-                            <i class="icon-chevron-right"></i>댓글 등록 현황
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to admin_viral_actions_path do %>
-                            <i class="icon-chevron-right"></i>바이럴 등록 현황
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to admin_traffic_logs_path do %>
-                            <i class="icon-chevron-right"></i>채널별 유입 현황
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to logs_admin_traffic_log_path(1) do %>
-                            <i class="icon-chevron-right"></i>주간 채널별 유입
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to admin_daily_cards_path do %>
-                            <i class="icon-chevron-right"></i>사연 이미지 관리
-                          <% end %>
-                        </li>
-                        <!-- <li>
-                          <%= link_to admin_channels_path do %>
-                            <i class="icon-chevron-right"></i>채널 관리
-                          <% end %>
-                        </li> -->
-                        <li>
-                          <%= link_to root_path do %>
-                            <i class="icon-chevron-right"></i>사이트 바로가기(홈)
-                          <% end %>
-                        </li>
-                    </ul>
+									<li>
+										<%= link_to admin_users_path do %>
+										<i class="icon-chevron-right"></i>신청자 현황
+										<% end %>
+									</li>
+									<li>
+										<%= link_to admin_comments_path do %>
+										<i class="icon-chevron-right"></i>댓글 등록 현황
+										<% end %>
+									</li>
+									<li>
+										<%= link_to admin_viral_actions_path do %>
+										<i class="icon-chevron-right"></i>바이럴 등록 현황
+										<% end %>
+									</li>
+									<li>
+										<%= link_to users_admin_viral_actions_path do %>
+										<i class="icon-chevron-right"></i>바이럴 등록 체리피커 아닌 사용자
+										<% end %>
+									</li>
+									<li>
+										<%= link_to admin_traffic_logs_path do %>
+										<i class="icon-chevron-right"></i>채널별 유입 현황
+										<% end %>
+									</li>
+									<li>
+										<%= link_to logs_admin_traffic_log_path(1) do %>
+										<i class="icon-chevron-right"></i>주간 채널별 유입
+										<% end %>
+									</li>
+									<li>
+										<%= link_to admin_daily_cards_path do %>
+										<i class="icon-chevron-right"></i>사연 이미지 관리
+										<% end %>
+									</li>
+									<!-- <li>
+										<%= link_to admin_channels_path do %>
+										<i class="icon-chevron-right"></i>채널 관리
+										<% end %>
+										</li> -->
+										<li>
+											<%= link_to root_path do %>
+											<i class="icon-chevron-right"></i>사이트 바로가기(홈)
+											<% end %>
+										</li>
+									</ul>
                 </div>
                 <% end %>
                 <!--/span-->

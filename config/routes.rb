@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       end
     end
     resources :users
-    resources :viral_actions 
+    resources :viral_actions do
+      collection do
+        get 'users'
+      end
+    end
     resources :daily_cards
     resources :comments do
       member do

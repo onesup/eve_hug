@@ -8,5 +8,4 @@ class Admin::UsersController < ApplicationController
       sum(case when users.device = 'mobile' then 1 else 0 end) as mobile_count, 
       count(*) as total_count")
   end
-  
 end
